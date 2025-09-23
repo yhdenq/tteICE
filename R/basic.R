@@ -365,8 +365,8 @@
 
   # ---- timeset ----
   if (!is.null(timeset)) {
-    if (!is.numeric(timeset) || length(timeset) != 1 || !is.finite(timeset))
-      stop("`timeset` must be NULL or a single finite numeric value.", call. = FALSE)
+    if (!is.numeric(timeset) || !is.finite(timeset))
+      stop("`timeset` must be NULL or finite numeric values.", call. = FALSE)
   }
 
   # ---- nboot ----
