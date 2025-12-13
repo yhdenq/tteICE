@@ -75,10 +75,10 @@ surv.composite.eff <- function(A,Time,cstatus,X=NULL,subset=NULL){
   tt = sort(unique(c(tt1,tt0)))
   K = length(tt)
   if (!is.null(X)){
-    Xb1 = as.numeric(as.matrix(X[subset,])%*%fit1$coefficients)
-    Xb0 = as.numeric(as.matrix(X[subset,])%*%fit0$coefficients)
-    Xb1c = as.numeric(as.matrix(X[subset,])%*%fit1c$coefficients)
-    Xb0c = as.numeric(as.matrix(X[subset,])%*%fit0c$coefficients)
+    Xb1 = fit1$linear.predictors
+    Xb0 = fit0$linear.predictors
+    Xb1c = fit1c$linear.predictors
+    Xb0c = fit0c$linear.predictors
   } else {
     Xb1 = Xb0 = Xb1c = Xb0c = rep(0,n)
   }
