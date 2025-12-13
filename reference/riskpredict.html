@@ -100,7 +100,14 @@ treated and under control), treatment effects, standard errors, and P-values.</p
 <span class="r-in"><span><span class="co">## nonparametric estimation without covariates</span></span></span>
 <span class="r-in"><span><span class="va">fit1</span> <span class="op">=</span> <span class="fu"><a href="scr.tteICE.html">scr.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t1</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d1</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d2</span>, <span class="st">"composite"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">riskpredict</span><span class="op">(</span><span class="va">fit1</span>, timeset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">670</span>,<span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .riskpredict_validate(fit, timeset, nboot, seed):</span> unused arguments (nboot, seed)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               670        2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.53226259  0.58641246</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se1    0.05012612  0.04988569</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.63767315  0.63767315</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se0    0.07929563  0.07929563</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.10541056 -0.05126070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.09381057  0.09368233</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.26116016  0.58425802</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
