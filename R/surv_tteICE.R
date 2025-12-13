@@ -86,7 +86,7 @@
 #' @export
 
 surv.tteICE <- function(A,Time,cstatus,strategy='composite',cov1=NULL,method='np',
-                     weights=NULL,subset=NULL,na.rm=FALSE){
+                     weights=NULL,subset=NULL,nboot=0,seed=NULL,na.rm=FALSE){
 
   # strategy <- match.arg(strategy, c('treatment','composite','natural','removed','whileon','principal'))
   # method <- match.arg(method, c('np','ipw','eff'))
@@ -140,8 +140,9 @@ surv.tteICE <- function(A,Time,cstatus,strategy='composite',cov1=NULL,method='np
     if (strategy=='whileon') fit = surv.whileon.eff(A,Time,cstatus,cov1,subset)
     if (strategy=='principal') fit = surv.principal.eff(A,Time,cstatus,cov1,subset)
   }
-  ate.list = c(fit,list(A=A,Time=Time,cstatus=cstatus,strategy=strategy,cov1=cov1,
-                    method=method,weights=weights,subset=subset,dtype='cmprsk'))
-  class(ate.list) = "tteICE"
-  return(ate.list)
+  fit = c(fit, list(A=A,Time=Time,cstatus=cstatus,strategy=strategy,cov1=cov1,method=method,
+                    weights=weights,subset=subset,na.rm=na.rm,dtype='cmprsk'))
+  fit = surv.boot(fit, nboot=nboot, seed=seed)
+  class(ate) = "tteICE"
+  return(ate)
 }
