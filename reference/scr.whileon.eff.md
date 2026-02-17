@@ -93,4 +93,4 @@ A list including
 ## See also
 
 [`scr.whileon`](https://mephas.github.io/tteICE/reference/scr.whileon.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)

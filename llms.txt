@@ -511,6 +511,10 @@ before the primary outcome events.
   : Fit CIFs using while on treatment strategy for competing risks data,
   based on efficient influence functions
 - [`tteICE-package`](https://mephas.github.io/tteICE/reference/tteICE-package.md)
+  [`tteICE`](https://mephas.github.io/tteICE/reference/tteICE-package.md)
+  [`scr.tteICE`](https://mephas.github.io/tteICE/reference/tteICE-package.md)
+  [`surv.tteICE`](https://mephas.github.io/tteICE/reference/tteICE-package.md)
+  [`tteICEShiny`](https://mephas.github.io/tteICE/reference/tteICE-package.md)
   : tteICE: Treatment Effect Estimation for Time-to-Event Data with
   Intercurrent Events
 - [`tteICE()`](https://mephas.github.io/tteICE/reference/tteICE.md) :

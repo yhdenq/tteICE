@@ -73,6 +73,6 @@ A list including
 
 ## See also
 
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md),
-[`tteICE`](https://mephas.github.io/tteICE/reference/tteICE.md)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html),
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html),
+[`tteICE`](https://mephas.github.io/tteICE/reference/tteICE-package.html)

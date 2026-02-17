@@ -97,4 +97,4 @@ A list including
 ## See also
 
 [`scr.treatment.eff`](https://mephas.github.io/tteICE/reference/scr.treatment.eff.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)

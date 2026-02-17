@@ -99,4 +99,4 @@ A list including
 ## See also
 
 [`scr.principal.eff`](https://mephas.github.io/tteICE/reference/scr.principal.eff.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)

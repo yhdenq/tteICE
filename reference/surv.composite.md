@@ -82,4 +82,4 @@ A list including
 ## See also
 
 [`surv.composite.eff`](https://mephas.github.io/tteICE/reference/surv.composite.eff.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)

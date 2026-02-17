@@ -85,4 +85,4 @@ A list including
 ## See also
 
 [`surv.natural`](https://mephas.github.io/tteICE/reference/surv.natural.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)

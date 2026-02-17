@@ -93,4 +93,4 @@ A list including
 ## See also
 
 [`scr.composite`](https://mephas.github.io/tteICE/reference/scr.composite.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)

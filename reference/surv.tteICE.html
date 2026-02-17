@@ -45,7 +45,7 @@ should be of a competing risks structure.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">surv.tteICE</span><span class="op">(</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="https://mephas.github.io/tteICE/reference/surv.tteICE.html">surv.tteICE</a></span><span class="op">(</span></span>
 <span>  <span class="va">A</span>,</span>
 <span>  <span class="va">Time</span>,</span>
 <span>  <span class="va">cstatus</span>,</span>
@@ -159,7 +159,7 @@ Inference for Cumulative Incidences and Treatment Effects in Randomized Controll
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="surv.boot.html">surv.boot</a></code>, <code><a href="scr.tteICE.html">scr.tteICE</a></code></p></div>
+    <div class="dont-index"><p><code><a href="surv.boot.html">surv.boot</a></code>, <code><a href="https://mephas.github.io/tteICE/reference/scr.tteICE.html">scr.tteICE</a></code></p></div>
     </div>
 
     <div class="section level2">
@@ -172,20 +172,20 @@ Inference for Cumulative Incidences and Treatment Effects in Randomized Controll
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Composite variable strategy, </span></span></span>
 <span class="r-in"><span><span class="co">## nonparametric estimation without covariates</span></span></span>
-<span class="r-in"><span><span class="va">fit1</span> <span class="op">=</span> <span class="fu">surv.tteICE</span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"composite"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fit1</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/surv.tteICE.html">surv.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"composite"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Hypothetical strategy (natural effects), </span></span></span>
 <span class="r-in"><span><span class="co">## nonparametric estimation with inverse probability weighting</span></span></span>
-<span class="r-in"><span><span class="va">fit2</span> <span class="op">=</span> <span class="fu">surv.tteICE</span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"natural"</span>, <span class="va">X</span>, method<span class="op">=</span><span class="st">'ipw'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fit2</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/surv.tteICE.html">surv.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"natural"</span>, <span class="va">X</span>, method<span class="op">=</span><span class="st">'ipw'</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## nonparametric estimation with weights as inverse propensity score</span></span></span>
 <span class="r-in"><span><span class="va">ps</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">A</span> <span class="op">~</span> <span class="va">X</span>, family<span class="op">=</span><span class="st">'binomial'</span><span class="op">)</span>, type<span class="op">=</span><span class="st">'response'</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">w</span> <span class="op">=</span> <span class="va">A</span><span class="op">/</span><span class="va">ps</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">A</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">ps</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">fit2</span> <span class="op">=</span> <span class="fu">surv.tteICE</span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"natural"</span>, weights<span class="op">=</span><span class="va">w</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fit2</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/surv.tteICE.html">surv.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"natural"</span>, weights<span class="op">=</span><span class="va">w</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Hypothetical strategy (removing intercurrent events),</span></span></span>
 <span class="r-in"><span><span class="co">## semiparametrically efficient estimation with covariates</span></span></span>
-<span class="r-in"><span><span class="va">fit3</span> <span class="op">=</span> <span class="fu">surv.tteICE</span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"removed"</span>, <span class="va">X</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fit3</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/surv.tteICE.html">surv.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"removed"</span>, <span class="va">X</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

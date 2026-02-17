@@ -90,4 +90,4 @@ A list including
 ## See also
 
 [`scr.removed.eff`](https://mephas.github.io/tteICE/reference/scr.removed.eff.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)

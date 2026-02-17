@@ -94,4 +94,4 @@ A list including
 ## See also
 
 [`scr.principal`](https://mephas.github.io/tteICE/reference/scr.principal.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)

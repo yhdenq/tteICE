@@ -82,4 +82,4 @@ A list including
 ## See also
 
 [`surv.treatment.eff`](https://mephas.github.io/tteICE/reference/surv.treatment.eff.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)

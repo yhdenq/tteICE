@@ -146,7 +146,7 @@ Time-to-Event Outcomes Under ICH E9 (R1). *Statistics in Medicine*.
 ## See also
 
 [`surv.boot`](https://mephas.github.io/tteICE/reference/surv.boot.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)
 
 ## Examples
 

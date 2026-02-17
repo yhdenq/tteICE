@@ -84,4 +84,4 @@ A list including
 ## See also
 
 [`surv.principal.eff`](https://mephas.github.io/tteICE/reference/surv.principal.eff.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)
