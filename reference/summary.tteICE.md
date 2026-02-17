@@ -49,6 +49,10 @@ X = as.matrix(bmt[,c('z1','z3','z5')])
 ## nonparametric estimation without covariates
 fit1 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
 summary(fit1)
+#> $call
+#> scr.tteICE(A = A, Time = bmt$t1, status = bmt$d1, Time_int = bmt$t2, 
+#>     status_int = bmt$d2, strategy = "composite")
+#> 
 #> $dtype
 #> [1] "smcmprsk"
 #> 
@@ -101,6 +105,10 @@ library(survival)
 fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, 
               data=bmt, strategy="composite", method='eff')
 summary(fit3)
+#> $call
+#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 
+#>     z5, data = bmt, strategy = "composite", method = "eff")
+#> 
 #> $dtype
 #> [1] "cmprsk"
 #> 
