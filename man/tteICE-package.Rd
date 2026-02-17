@@ -3,6 +3,10 @@
 \docType{package}
 \name{tteICE-package}
 \alias{tteICE-package}
+\alias{tteICE}
+\alias{scr.tteICE}
+\alias{surv.tteICE}
+\alias{tteICEShiny}
 \title{tteICE: Treatment Effect Estimation for Time-to-Event Data with Intercurrent Events}
 \description{
 This package aims to analyze treatment effects in clinical trials with time-to-event outcomes is complicated by intercurrent events.
