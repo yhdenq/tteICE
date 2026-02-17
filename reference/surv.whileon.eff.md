@@ -1,0 +1,88 @@
+# Fit CIFs using while on treatment strategy for competing risks data, based on efficient influence functions
+
+This function estimates the potential cumulative incidence function
+based on efficient influence functions using while on treatment strategy
+(competing risks data structure). Cox models are employed for survival
+models. This strategy can be understood as the competing risks model,
+which gives the subdistribution of the primary event.
+
+## Usage
+
+``` r
+surv.whileon.eff(A, Time, cstatus, X = NULL)
+```
+
+## Arguments
+
+- A:
+
+  Treatment indicator, 1 for treatment and 0 for control.
+
+- Time:
+
+  Time to event.
+
+- cstatus:
+
+  Indicator of event, 1 for the primary event, 2 for the intercurrent
+  event, 0 for censoring.
+
+- X:
+
+  Baseline covariates.
+
+## Value
+
+A list including
+
+- time1:
+
+  Time points in the treated group.
+
+- time0:
+
+  Time points in the control group.
+
+- cif1:
+
+  Estimated cumulative incidence function in the treated group.
+
+- cif0:
+
+  Estimated cumulative incidence function in the control group.
+
+- se1:
+
+  Standard error of the estimated cumulative incidence function in the
+  treated group.
+
+- se0:
+
+  Standard error of the estimated cumulative incidence function in the
+  control group.
+
+- time:
+
+  Time points in both groups.
+
+- ate:
+
+  Estimated treatment effect (difference in cumulative incidence
+  functions).
+
+- se:
+
+  Standard error of the estimated treatment effect.
+
+- p.val:
+
+  P value of testing the treatment effect based on the efficient
+  influence function of the restricted mean survival time lost by the
+  end of study.
+
+## Details
+
+## See also
+
+[`surv.whileon`](https://mephas.github.io/tteICE/reference/surv.whileon.md),
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)

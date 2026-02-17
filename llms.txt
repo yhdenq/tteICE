@@ -1,0 +1,521 @@
+# About this package
+
+- [Randomized trials and observational
+  studies](#randomized-trials-and-observational-studies)
+- [Five strategies to deal with intercurrent
+  events](#five-strategies-to-deal-with-intercurrent-events)
+- [Two types of data structures](#two-types-of-data-structures)
+- [About this package](#about-this-package)
+  - [Installation](#installation)
+  - [Example](#example)
+  - [Competing risks data structure](#competing-risks-data-structure)
+  - [Semicompeting risks data
+    structure](#semicompeting-risks-data-structure)
+  - [Using formula to fit the model](#using-formula-to-fit-the-model)
+    - [Competing risks data
+      structure](#competing-risks-data-structure-1)
+    - [Semicompeting risks data
+      structure](#semicompeting-risks-data-structure-1)
+  - [Remarks on methodology](#remarks-on-methodology)
+
+The goal of the package “tteICE” is to estimate the treatment effect for
+time-to-event outcomes with intercurrent events.
+
+## Randomized trials and observational studies
+
+**Randomized trials** are the best form of experiments for evaluating
+the treatment effect because confounders are naturally balanced between
+treatment groups. The difference in outcomes between treatment groups is
+explained by the treatment condition. In observational studies,
+confounders (observed or unobserved) are not balanced. To estimate the
+treatment effect, we need to assume all confounders are collected. Then
+we may use matching, weighting, or emulating trial methods to create a
+sample analogue to randomized trials. Although methods for randomized
+trials apply to observational studies after adjusting for confounders,
+one should be careful in making causal conclusions based on
+observational studies due to the threat of unmeasured confounding.
+
+## Five strategies to deal with intercurrent events
+
+**The ICH E9 (R1)** proposed five strategies to deal with intercurrent
+events: treatment policy strategy, composite variable strategy,
+hypothetical strategy, while on treatment strategy, and principal
+stratum strategy. To answer a specific scientific question, a
+corresponding strategy should be chosen before the experimental design
+and data analysis. The estimand to describe the distribution of the time
+to the primary outcome event is the potential cumulative incidence
+function (CIF). The treatment effect is defined as the contrast of the
+potential cumulative incidence functions under treated and control.
+
+- **Treatment policy strategy.** The treatment policy strategy addresses
+  the problem of intercurrent events by expanding the initial treatment
+  conditions to a treatment policy. This strategy is applicable only if
+  intercurrent events do not hinder primary outcome events. It is
+  confined to a semicompeting risks context.
+- **Composite variable strategy.** The composite variable strategy
+  addresses the problem of intercurrent events by expanding the outcome
+  variables. It aggregates the intercurrent event and primary outcome
+  event into a single composite outcome variable.
+- **Hypothetical strategy.** The hypothetical strategy envisions a
+  hypothetical clinical trial condition where the occurrence of
+  intercurrent events is restricted in certain ways. By doing so, the
+  distribution of potential outcomes under the hypothetical scenario can
+  capture the impact of intercurrent events explicitly through a
+  pre-specified criterion. The hypothetical strategy is closely related
+  to mediation analysis, which is intended to evaluate the direct and
+  indirect effects using semicompeting risks data.
+- **While on treatment strategy.** The while on treatment strategy
+  considers the measure of outcome variables taken only up to the
+  occurrence of intercurrent events. The failures of primary outcome
+  events should not be counted in the cumulative incidences if
+  intercurrent events occurred. The while on treatment strategy is
+  closely related to the competing risks model.
+- **Principal stratum strategy.** The principal stratum strategy aims to
+  stratify the population into subpopulations based on the joint
+  potential occurrences of intercurrent events under the two treatment
+  assignments. Usually, we are interested in a principal stratum
+  comprised of individuals who would never experience intercurrent
+  events, regardless of which treatment they receive. A principal
+  ignorability assumption is made.
+
+## Two types of data structures
+
+In particular, we consider two types of data structures.
+
+- **Competing risks.** Only the time to the first occurrence of either
+  the primary outcome event or the intercurrent event is recorded. An
+  indicator describes the type of this event, i.e., whether it is the
+  primary outcome event, intercurrent event, or censoring. The treatment
+  policy strategy cannot be applied to competing risks data.
+- **Semicompeting risks.** Both the time to the primary outcome event
+  and the time to the intercurrent event are recorded. The censoring
+  indicators for these events are also recorded. All five strategies can
+  be applied to semicompeting risks data.
+
+The composite variable strategy, while on treatment strategy, principal
+stratum strategy, and hypothetical strategy (II, removed) yield the same
+results for the competing risks and semicompeting risks data, since only
+the first occurrence of events is used. The hypothetical strategy (I,
+natural) yields different results for the competing risks and
+semicompeting risks data, since both cause-specific hazards of the
+primary event contribute to the counterfactual cumulative incidence
+function for semicompeting risk data.
+
+------------------------------------------------------------------------
+
+References:
+
+\[1\] International Conference on Harmonization (2019). ICH E9 (R1):
+Addendum to Statistical Principles for Clinical Trials on Choosing
+Appropriate Estimands and Defining Sensitivity Analyses in Clinical
+Trials. (Step 4 version dated 20 November 2019).
+<https://database.ich.org/sites/default/files/E9-R1_Step4_Guideline_2019_1203.pdf>.
+
+\[2\] Deng, Y., Han, S., & Zhou, X. H. (2025). Inference for Cumulative
+Incidences and Treatment Effects in Randomized Controlled Trials With
+Time‐to‐Event Outcomes Under ICH E9 (R1). Statistics in Medicine.
+<https://doi.org/10.1002/sim.70091>.
+
+------------------------------------------------------------------------
+
+## Installation
+
+You can install the development version of “tteICE” from GitHub with:
+
+**(We are updaing the package)**
+
+``` r
+# install.packages("pak")
+pak::pak("mephas/tteICE")
+```
+
+Alternatively, you can install “tteICE” from R CRAN with:
+
+``` r
+install.packages("tteICE")
+```
+
+## Example
+
+We use the `bmt` data to illustrate how to estimate the treatment
+effect. The primary event is death, and the intercurrent event is
+relapse.
+
+## Competing risks data structure
+
+The time to the first event (either death or relapse) is t2. The event
+indicator is d4=d2+d3, so that d4=1 if death occurs first, while d4=2 if
+relapse occurs first.
+
+``` r
+library(tteICE)
+data(bmt)
+A = as.numeric(bmt$group>1)
+X = as.matrix(bmt[,c('z1','z3','z5')])
+bmt = transform(bmt, d4=d2+d3)
+bmt$A = A
+```
+
+Suppose we would like to use the hypothetical strategy (natural
+effects). We fit the model by nonparametric estimation.
+
+``` r
+fit1 = surv.tteICE(A, bmt$t2, bmt$d4, "natural")
+plot_inc(fit1, plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_1-1.png)
+
+``` r
+
+plot_ate(fit1)
+```
+
+![](reference/figures/README-example_1-2.png)
+
+``` r
+## We can also use bootstrap confidence intervals
+# plot_ate(fit1, nboot=200)
+```
+
+We can also use inverse probability weighting to account for
+confounding.
+
+``` r
+fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "natural", X, method='ipw')
+plot_inc(fit2, plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_2-1.png)
+
+``` r
+
+plot_ate(fit2)
+```
+
+![](reference/figures/README-example_2-2.png)
+
+To increase efficiency, we use the efficient influence function
+(EIF)-based method.
+
+``` r
+fit3 = surv.tteICE(A, bmt$t2, bmt$d4, "natural", X, method='eff')
+plot_inc(fit3, plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_3-1.png)
+
+``` r
+
+plot_ate(fit3)
+```
+
+![](reference/figures/README-example_3-2.png)
+
+## Semicompeting risks data structure
+
+Note that the time to death (or censoring) is t1 and the time to relapse
+(or censoring) is t2. We use the hypothetical strategy (natural effects)
+and fit the model nonparametrically.
+
+``` r
+fit4 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural")
+plot_inc(fit4, plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_4-1.png)
+
+``` r
+
+plot_ate(fit4)
+```
+
+![](reference/figures/README-example_4-2.png)
+
+``` r
+## We can also use bootstrap confidence intervals
+# plot_ate(fit4, nboot=200)
+```
+
+We can also use inverse probability weighting to account for
+confounding.
+
+``` r
+fit5 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural", X, method='ipw')
+plot_inc(fit5, plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_5-1.png)
+
+``` r
+
+plot_ate(fit5)
+```
+
+![](reference/figures/README-example_5-2.png)
+
+To increase efficiency, we use the efficient influence function
+(EIF)-based method.
+
+``` r
+fit6 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural", X, method='eff') 
+plot_inc(fit6, plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_6-1.png)
+
+``` r
+
+plot_ate(fit6)
+```
+
+![](reference/figures/README-example_6-2.png)
+
+## Using formula to fit the model
+
+### Competing risks data structure
+
+``` r
+library(survival) ## need this package
+fit7 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, data=bmt, strategy="natural", method='eff')
+plot(fit7, type="inc", plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_7-1.png)
+
+``` r
+print(fit7)
+#> Input:
+#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 
+#>     z5, data = bmt, strategy = "natural", method = "eff")
+#> -----------------------------------------------------------------------
+#> Data type: competing risks 
+#> Strategy: hypothetical strategy (controlling the hazard of ICEs) 
+#> Estimation method: semiparametrically efficient estimation 
+#> Observations: 137 (including 99 treated and 38 control)
+#> Maximum follow-up time: 2640 
+#> P-value of the average treatment effect: 0.4562 
+#> -----------------------------------------------------------------------
+#> The estimated cumulative incidences and treatment effects at quartiles:
+#>           660    1320    1980    2640
+#> CIF1   0.2107  0.2386  0.2386  0.2855
+#> se1    0.0432  0.0461  0.0461  0.0607
+#> CIF0   0.3058  0.3058  0.3058  0.3058
+#> se0    0.0703  0.0703  0.0703  0.0703
+#> ATE   -0.0951 -0.0672 -0.0672 -0.0204
+#> se     0.0784  0.0788  0.0788  0.0863
+#> p.val  0.2250  0.3937  0.3937  0.8132
+predict(fit7)
+#>               660        1320        1980        2640
+#> CIF1   0.21074266  0.23860240  0.23860240  0.28547077
+#> se1    0.04315013  0.04605499  0.04605499  0.06066512
+#> CIF0   0.30584925  0.30584925  0.30584925  0.30584925
+#> se0    0.07026486  0.07026486  0.07026486  0.07026486
+#> ATE   -0.09510659 -0.06724685 -0.06724685 -0.02037848
+#> se     0.07837881  0.07884710  0.07884710  0.08625633
+#> p.val  0.22496844  0.39372770  0.39372770  0.81323485
+```
+
+### Semicompeting risks data structure
+
+``` r
+
+fit8 = tteICE(Surv(t1, d1)~A|z1+z3+z5, add.scr=~Surv(t2,d2), data=bmt, strategy="natural", method='eff')
+plot(fit8, type="inc", plot.configs=list(legend=c('AML','ALL')))
+```
+
+![](reference/figures/README-example_8-1.png)
+
+``` r
+print(fit8)
+#> Input:
+#> tteICE(formula = Surv(t1, d1) ~ A | z1 + z3 + z5, add.scr = ~Surv(t2, 
+#>     d2), data = bmt, strategy = "natural", method = "eff")
+#> -----------------------------------------------------------------------
+#> Data type: semicompeting risks 
+#> Strategy: hypothetical strategy (controlling the hazard of ICEs) 
+#> Estimation method: semiparametrically efficient estimation 
+#> Observations: 137 (including 99 treated and 38 control)
+#> Maximum follow-up time: 2640 
+#> P-value of the average treatment effect: 0.8945 
+#> -----------------------------------------------------------------------
+#> The estimated cumulative incidences and treatment effects at quartiles:
+#>           660    1320    1980   2640
+#> CIF1   0.5344  0.6028  0.6028 0.6520
+#> se1    0.0553  0.0569  0.0569 0.0603
+#> CIF0   0.5597  0.6079  0.6079 0.6079
+#> se0    0.0664  0.0622  0.0622 0.0622
+#> ATE   -0.0254 -0.0052 -0.0052 0.0441
+#> se     0.0685  0.0655  0.0655 0.0711
+#> p.val  0.7112  0.9373  0.9373 0.5356
+predict(fit8)
+#>               660        1320        1980       2640
+#> CIF1   0.53436338  0.60278356  0.60278356 0.65201552
+#> se1    0.05527063  0.05685682  0.05685682 0.06031028
+#> CIF0   0.55974502  0.60794149  0.60794149 0.60794149
+#> se0    0.06643936  0.06218743  0.06218743 0.06218743
+#> ATE   -0.02538164 -0.00515793 -0.00515793 0.04407403
+#> se     0.06854998  0.06552374  0.06552374 0.07113865
+#> p.val  0.71118529  0.93725654  0.93725654 0.53555338
+```
+
+## Remarks on methodology
+
+To identify the potential CIF and treatment effect, we make the
+following assumptions. When the semiparametrically efficient estimation
+method is used, these assumptions are made conditional on covariates.
+
+- Stable unit treatment value assumption (SUTVA). All individuals are
+  independent, and there is only one version of potential outcomes
+  associated with each treatment condition.
+- Consistency. The potential time to events and event indicators
+  associated with the realized treatment condition are observable.
+- Randomization. The treatment is independent of potential outcomes,
+  i.e., the treatment assignment is randomized.
+- Random censoring. The potential censoring time is independent of
+  potential event times.
+- Positivity. There is a positive probability for each individual to be
+  treated or controlled. There is a positive probability that the
+  censoring time is larger than the end of study.
+- Principal ignorability. The potential time to the primary outcome
+  event does not rely on the cross-world potential time to the
+  intercurrent event. This assumption is only required for the principal
+  stratum strategy.
+
+The five strategies differ in the scientific questions to answer and,
+therefore, incorporate intercurrent events differently. The treatment
+policy strategy considers the effect on primary outcome events with
+intercurrent events as natural. Because the intercurrent event is
+considered part of the treatment condition, any difference in the
+hazards of intercurrent events between the treatment groups reflects the
+effect of the treatment policy. The composite variable strategy
+considers a composite of the primary outcome event and the intercurrent
+event. The while on treatment strategy estimand quantifies the total
+effect on the cumulative incidence of the primary outcome event, which
+is contributed by two sources: one is the effect of changing the hazard
+of primary outcome events, and the other is the effect of changing the
+hazard of intercurrent events. The first source is also quantified by
+the hypothetical strategy estimand Scenario I. The principal stratum
+strategy considers a subpopulation defined by potential intercurrent
+events, typically where such events would not occur under either
+treatment condition.
+
+In general, the hypothetical strategy and principal stratum strategy
+target some direct effects, while other strategies target some total
+effects. Identifying direct effects requires stronger assumptions, such
+as sequential ignorability or principal ignorability. Under the
+multi-state model, let the original status, intercurrent event status,
+and primary outcome event status be three compartments. Then the
+potential CIF under the composite variable strategy is the probability
+of being in either state of intercurrent events or primary outcome
+events, whereas the potential CIF under the while on treatment strategy
+is the probability of being in the state of primary outcome events
+developed directly following the initial status. If the data are of the
+semi-competing risks structure, the potential CIF under the treatment
+policy strategy represents the probability of being in the state of
+primary outcome events, regardless of whether intercurrent events occur
+before the primary outcome events.
+
+# Package index
+
+## All functions
+
+- [`bmt`](https://mephas.github.io/tteICE/reference/bmt.md) : Data from
+  Section 1.3 of Klein and Moeschberger (1997)
+- [`plot(`*`<tteICE>`*`)`](https://mephas.github.io/tteICE/reference/plot.tteICE.md)
+  : Plot method for 'tteICE' objects
+- [`plot_ate()`](https://mephas.github.io/tteICE/reference/plot_ate.md)
+  : Plot estimated treatment effects
+- [`plot_inc()`](https://mephas.github.io/tteICE/reference/plot_inc.md)
+  : Plot estimated cumulative incidence functions (CIFs)
+- [`predict(`*`<tteICE>`*`)`](https://mephas.github.io/tteICE/reference/predict.tteICE.md)
+  : Predict method for 'tteICE' objects at specific time points
+- [`print(`*`<tteICE>`*`)`](https://mephas.github.io/tteICE/reference/print.tteICE.md)
+  : Print method for 'tteICE' objects
+- [`scr.composite()`](https://mephas.github.io/tteICE/reference/scr.composite.md)
+  : Fit CIFs using composite variable strategy for semicompeting risks
+  data
+- [`scr.composite.eff()`](https://mephas.github.io/tteICE/reference/scr.composite.eff.md)
+  : Fit CIFs using composite variable strategy for semicompeting risks
+  data, based on efficient influence functions
+- [`scr.natural()`](https://mephas.github.io/tteICE/reference/scr.natural.md)
+  : Fit CIFs using hypothetical strategy (I) for semicompeting risks
+  data
+- [`scr.natural.eff()`](https://mephas.github.io/tteICE/reference/scr.natural.eff.md)
+  : Fit CIFs using hypothetical strategy (I) for semicompeting risks
+  data, based on efficient influence functions
+- [`scr.principal()`](https://mephas.github.io/tteICE/reference/scr.principal.md)
+  : Fit CIFs using principal stratum strategy for semicompeting risks
+  data
+- [`scr.principal.eff()`](https://mephas.github.io/tteICE/reference/scr.principal.eff.md)
+  : Fit CIFs using principal stratum strategy for semicompeting risks
+  data, based on efficient influence functions
+- [`scr.removed()`](https://mephas.github.io/tteICE/reference/scr.removed.md)
+  : Fit CIFs using hypothetical strategy (II) for semicompeting risks
+  data
+- [`scr.removed.eff()`](https://mephas.github.io/tteICE/reference/scr.removed.eff.md)
+  : Fit CIFs using hypothetical strategy (II) for semicompeting risks
+  data, based on efficient influence functions
+- [`scr.treatment()`](https://mephas.github.io/tteICE/reference/scr.treatment.md)
+  : Fit CIFs using treatment policy strategy for semicompeting risks
+  data
+- [`scr.treatment.eff()`](https://mephas.github.io/tteICE/reference/scr.treatment.eff.md)
+  : Fit CIFs using treatment policy strategy for semicompeting risks
+  data, based on efficient influence functions
+- [`scr.tteICE()`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
+  : Fit CIFs for semicompeting risks time-to-event data with
+  intercurrent events.
+- [`scr.whileon()`](https://mephas.github.io/tteICE/reference/scr.whileon.md)
+  : Fit CIFs using while on treatment strategy for semicompeting risks
+  data
+- [`scr.whileon.eff()`](https://mephas.github.io/tteICE/reference/scr.whileon.eff.md)
+  : Fit CIFs using while on treatment strategy for semicompeting risks
+  data, based on efficient influence functions
+- [`summary(`*`<tteICE>`*`)`](https://mephas.github.io/tteICE/reference/summary.tteICE.md)
+  : Summary method for 'tteICE' objects
+- [`surv.HR()`](https://mephas.github.io/tteICE/reference/surv.HR.md) :
+  Estimate hazard ratios
+- [`surv.boot()`](https://mephas.github.io/tteICE/reference/surv.boot.md)
+  : Calculate standard errors for estimated CIFs and treatment effects
+- [`surv.composite()`](https://mephas.github.io/tteICE/reference/surv.composite.md)
+  : Fit CIFs using composite variable strategy for competing risks data
+- [`surv.composite.eff()`](https://mephas.github.io/tteICE/reference/surv.composite.eff.md)
+  : Fit CIFs using composite variable strategy for competing risks data,
+  based on efficient influence functions
+- [`surv.natural()`](https://mephas.github.io/tteICE/reference/surv.natural.md)
+  : Fit CIFs using hypothetical strategy (I) for competing risks data
+- [`surv.natural.eff()`](https://mephas.github.io/tteICE/reference/surv.natural.eff.md)
+  : Fit CIFs using hypothetical strategy (I) for competing risks data,
+  based on efficient influence functions
+- [`surv.principal()`](https://mephas.github.io/tteICE/reference/surv.principal.md)
+  : Fit CIFs using principal stratum strategy for competing risks data
+- [`surv.principal.eff()`](https://mephas.github.io/tteICE/reference/surv.principal.eff.md)
+  : Fit CIFs using principal stratum strategy for competing risks data,
+  based on efficient influence functions
+- [`surv.removed()`](https://mephas.github.io/tteICE/reference/surv.removed.md)
+  : Fit CIFs using hypothetical strategy (II) for competing risks data
+- [`surv.removed.eff()`](https://mephas.github.io/tteICE/reference/surv.removed.eff.md)
+  : Fit CIFs using hypothetical strategy (II) for competing risks data,
+  based on efficient influence functions
+- [`surv.treatment()`](https://mephas.github.io/tteICE/reference/surv.treatment.md)
+  : Fit CIFs using treatment policy strategy for competing risks data
+- [`surv.treatment.eff()`](https://mephas.github.io/tteICE/reference/surv.treatment.eff.md)
+  : Fit CIFs using treatment policy strategy for competing risks data,
+  based on efficient influence functions
+- [`surv.tteICE()`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
+  : Fit CIFs for competing risks time-to-event data with intercurrent
+  events.
+- [`surv.whileon()`](https://mephas.github.io/tteICE/reference/surv.whileon.md)
+  : Fit CIFs using while on treatment strategy for competing risks data
+- [`surv.whileon.eff()`](https://mephas.github.io/tteICE/reference/surv.whileon.eff.md)
+  : Fit CIFs using while on treatment strategy for competing risks data,
+  based on efficient influence functions
+- [`tteICE-package`](https://mephas.github.io/tteICE/reference/tteICE-package.md)
+  : tteICE: Treatment Effect Estimation for Time-to-Event Data with
+  Intercurrent Events
+- [`tteICE()`](https://mephas.github.io/tteICE/reference/tteICE.md) :
+  Using formula to fit CIFs for time-to-event data with intercurrent
+  events
+- [`tteICEShiny()`](https://mephas.github.io/tteICE/reference/tteICEShiny.md)
+  : Shiny app for tteICE
+

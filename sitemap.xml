@@ -8,8 +8,8 @@
 <url><loc>https://mephas.github.io/tteICE/reference/plot.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/plot_ate.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/plot_inc.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/predict.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/print.tteICE.html</loc></url>
-<url><loc>https://mephas.github.io/tteICE/reference/riskpredict.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/scr.composite.eff.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/scr.composite.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/scr.natural.eff.html</loc></url>
@@ -23,6 +23,7 @@
 <url><loc>https://mephas.github.io/tteICE/reference/scr.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/scr.whileon.eff.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/scr.whileon.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/summary.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/surv.HR.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/surv.boot.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/surv.composite.eff.html</loc></url>
@@ -38,6 +39,8 @@
 <url><loc>https://mephas.github.io/tteICE/reference/surv.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/surv.whileon.eff.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/surv.whileon.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/tteICE-package.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/tteICEShiny.html</loc></url>
 </urlset>
 
