@@ -31,6 +31,8 @@
 #' \item{se}{Standard error of the estimated treatment effect.}
 #' \item{p.val}{P value of testing the treatment effect based on the efficient influence function of
 #' the restricted mean survival time lost by the end of study.}
+#' \item{coef}{Coefficients of covariates in the working Cox models for each event.}
+#' \item{ph}{P values of the proportional hazards assumption in the working Cox models for each event.}
 #' }
 #'
 #' @details
@@ -60,7 +62,8 @@
 #' @seealso \code{\link[tteICE]{scr.natural}}, \code{\link[tteICE]{scr.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
+
 scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   n = length(A)
   if (is.null(X)) {
