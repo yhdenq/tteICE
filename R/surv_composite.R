@@ -45,7 +45,7 @@
 #' @seealso \code{\link[tteICE]{surv.composite.eff}}, \code{\link[tteICE]{surv.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 surv.composite <- function(A,Time,cstatus,weights=rep(1,length(A))){
   n = length(A)
