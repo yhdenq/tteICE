@@ -48,7 +48,7 @@
 #' @seealso \code{\link[tteICE]{scr.principal.eff}}, \code{\link[tteICE]{scr.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 scr.principal <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A))){
   Time = (Time + Time_int - abs(Time-Time_int))/2
