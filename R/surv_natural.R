@@ -54,7 +54,7 @@
 #' @seealso \code{\link[tteICE]{surv.natural.eff}}, \code{\link[tteICE]{surv.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 surv.natural <- function(A,Time,cstatus,weights=rep(1,length(A))){
   n = length(A)
