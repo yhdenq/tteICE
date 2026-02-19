@@ -1,7 +1,7 @@
 #' @title Print the summary of 'tteICE'
 #' @description Print the summary of 'tteICE'
 #' @param object A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.
-#' @keywords internal
+#' @export
 
 print.summary.tteICE <- function(x) {
   if(!is.null(x$call)){
@@ -19,4 +19,5 @@ print.summary.tteICE <- function(x) {
   cat("The estimated cumulative incidences and treatment effects at quartiles:\n")
   print(round(x$est, 3))
   cat("\n")
+  invisible(x)
 }
