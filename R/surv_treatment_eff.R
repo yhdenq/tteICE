@@ -29,6 +29,7 @@
 #' of the restricted mean survival time lost by the end of study.}
 #' \item{coef}{Coefficients of covariates in the working Cox models for the primary event.}
 #' \item{ph}{P values of the proportional hazards assumption in the working Cox models for the primary event.}
+#' \item{cumhaz}{Baseline cumulative hazards in the working Cox models .}
 #' }
 #'
 #' @details
@@ -56,7 +57,6 @@
 #'
 #' @seealso \code{\link[tteICE]{surv.treatment}}, \code{\link[tteICE]{surv.tteICE}}
 #'
-#'
 #' @keywords internal
 
 surv.treatment.eff <- function(A,Time,cstatus,X=NULL){
@@ -79,8 +79,9 @@ surv.treatment.eff <- function(A,Time,cstatus,X=NULL){
   Xb1c = X%*%fit1c$coefficients
   Xb0c = X%*%fit0c$coefficients
   cumhaz1 = .matchy(c(0,basehaz(fit1,centered=FALSE)$hazard),tt1,tt)
-  cumhaz1 = exp(Xb1)%*%t(cumhaz1)
   cumhaz0 = .matchy(c(0,basehaz(fit0,centered=FALSE)$hazard),tt0,tt)
+  cumhaz = data.frame(time=tt,cumhaz1=cumhaz1,cumhaz0=cumhaz0)
+  cumhaz1 = exp(Xb1)%*%t(cumhaz1)
   cumhaz0 = exp(Xb0)%*%t(cumhaz0)
   cumhaz1c = .matchy(c(0,basehaz(fit1c,centered=FALSE)$hazard),c(0,basehaz(fit1c)$time),tt)
   cumhaz0c = .matchy(c(0,basehaz(fit0c,centered=FALSE)$hazard),c(0,basehaz(fit0c)$time),tt)
@@ -109,13 +110,13 @@ surv.treatment.eff <- function(A,Time,cstatus,X=NULL){
   IFt = colSums(t(eif1-eif0)*diff(c(0,tt))*Ti,na.rm=TRUE)
   Vt = sd(IFt,na.rm=TRUE)/sqrt(n)
   p = 2*pnorm(-abs(Tt/Vt))
-  coef1 = fit1$coefficients
-  coef0 = fit0$coefficients
+  coef1 = fit1$coefficients * attr(X,"scaled:scale")
+  coef0 = fit0$coefficients * attr(X,"scaled:scale")
   coef = list(coef1=coef1,coef0=coef0)
   ph1 = cox.zph(fit1, terms=FALSE)
   ph0 = cox.zph(fit0, terms=FALSE)
   ph = list(ph1=ph1,ph0=ph0)
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
-              coef=coef,ph=ph))
+              coef=coef,ph=ph,cumhaz=cumhaz))
 }
