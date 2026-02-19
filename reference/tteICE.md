@@ -177,55 +177,17 @@ library(survival)
 ## model fitting for competing risk data without covariates
 fit1 = tteICE(Surv(t2, d4, type = "mstate")~A,
  data=bmt, strategy="composite", method='eff')
+#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
 print(fit1)
-#> Input:
-#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, 
-#>     strategy = "composite", method = "eff")
-#> -----------------------------------------------------------------------
-#> Data type: competing risks 
-#> Strategy: composite variable strategy 
-#> Estimation method: semiparametrically efficient estimation 
-#> Observations: 137 (including 99 treated and 38 control)
-#> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.5907 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5323  0.5864  0.5864  0.6299
-#> se1    0.0501  0.0499  0.0499  0.0617
-#> CIF0   0.6087  0.6377  0.6377  0.6377
-#> se0    0.0803  0.0793  0.0793  0.0793
-#> ATE   -0.0764 -0.0513 -0.0513 -0.0078
-#> se     0.0946  0.0937  0.0937  0.1005
-#> p.val  0.4192  0.5843  0.5843  0.9384
-#> 
+#> Error: object 'fit1' not found
 
 ## model fitting for competing risk data without covariates 
 ## with bootstrap confidence intervals
 fit.bt1 = tteICE(Surv(t2, d4, type = "mstate")~A,
  data=bmt, strategy="composite", method='eff', nboot=20, seed=2)
+#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
 print(fit.bt1)
-#> Input:
-#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, 
-#>     strategy = "composite", method = "eff", nboot = 20, seed = 2)
-#> -----------------------------------------------------------------------
-#> Data type: competing risks 
-#> Strategy: composite variable strategy 
-#> Estimation method: semiparametrically efficient estimation 
-#> Observations: 137 (including 99 treated and 38 control)
-#> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.5907 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5323  0.5864  0.5864  0.6299
-#> se1    0.0511  0.0574  0.0574  0.0586
-#> CIF0   0.6087  0.6377  0.6377  0.6377
-#> se0    0.0673  0.0716  0.0716  0.0716
-#> ATE   -0.0764 -0.0513 -0.0513 -0.0078
-#> se     0.0857  0.0916  0.0916  0.0912
-#> p.val  0.3723  0.5759  0.5759  0.9321
-#> 
+#> Error: object 'fit.bt1' not found
 
 ## model fitting for competing risk data with covariates
 fit2 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
@@ -256,28 +218,9 @@ print(fit2)
 ## model fitting for semicompeting risk data without covariates
 fitscr1 = tteICE(Surv(t1, d1)~A, ~Surv(t2, d2),
  data=bmt, strategy="composite", method='eff')
+#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
 print(fitscr1)
-#> Input:
-#> tteICE(formula = Surv(t1, d1) ~ A, add.scr = ~Surv(t2, d2), data = bmt, 
-#>     strategy = "composite", method = "eff")
-#> -----------------------------------------------------------------------
-#> Data type: semicompeting risks 
-#> Strategy: composite variable strategy 
-#> Estimation method: semiparametrically efficient estimation 
-#> Observations: 137 (including 99 treated and 38 control)
-#> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.5907 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5323  0.5864  0.5864  0.6299
-#> se1    0.0501  0.0499  0.0499  0.0617
-#> CIF0   0.6087  0.6377  0.6377  0.6377
-#> se0    0.0803  0.0793  0.0793  0.0793
-#> ATE   -0.0764 -0.0513 -0.0513 -0.0078
-#> se     0.0946  0.0937  0.0937  0.1005
-#> p.val  0.4192  0.5843  0.5843  0.9384
-#> 
+#> Error: object 'fitscr1' not found
 
 ## model fitting for semicompeting risk data without covariates
 fitscr2 = tteICE(Surv(t1, d1)~A|z1+z3+z5, ~Surv(t2, d2),

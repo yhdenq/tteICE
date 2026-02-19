@@ -187,55 +187,17 @@ Inference for Cumulative Incidences and Treatment Effects in Randomized Controll
 <span class="r-in"><span><span class="co">## model fitting for competing risk data without covariates</span></span></span>
 <span class="r-in"><span><span class="va">fit1</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/tteICE-package.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span>,</span></span>
 <span class="r-in"><span> data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"composite"</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0):</span> arguments imply differing number of rows: 131, 95, 38</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fit1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Input:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     strategy = "composite", method = "eff")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Data type: competing risks </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Strategy: composite variable strategy </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimation method: semiparametrically efficient estimation </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Observations: 137 (including 99 treated and 38 control)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Maximum follow-up time: 2640 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-value of the average treatment effect: 0.5907 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> The estimated cumulative incidences and treatment effects at quartiles:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           660    1320    1980    2640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.5323  0.5864  0.5864  0.6299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se1    0.0501  0.0499  0.0499  0.0617</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.6087  0.6377  0.6377  0.6377</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se0    0.0803  0.0793  0.0793  0.0793</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.0764 -0.0513 -0.0513 -0.0078</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.0946  0.0937  0.0937  0.1005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.4192  0.5843  0.5843  0.9384</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit1' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## model fitting for competing risk data without covariates </span></span></span>
 <span class="r-in"><span><span class="co">## with bootstrap confidence intervals</span></span></span>
 <span class="r-in"><span><span class="va">fit.bt1</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/tteICE-package.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span>,</span></span>
 <span class="r-in"><span> data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"composite"</span>, method<span class="op">=</span><span class="st">'eff'</span>, nboot<span class="op">=</span><span class="fl">20</span>, seed<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0):</span> arguments imply differing number of rows: 131, 95, 38</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fit.bt1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Input:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     strategy = "composite", method = "eff", nboot = 20, seed = 2)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Data type: competing risks </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Strategy: composite variable strategy </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimation method: semiparametrically efficient estimation </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Observations: 137 (including 99 treated and 38 control)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Maximum follow-up time: 2640 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-value of the average treatment effect: 0.5907 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> The estimated cumulative incidences and treatment effects at quartiles:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           660    1320    1980    2640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.5323  0.5864  0.5864  0.6299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se1    0.0511  0.0574  0.0574  0.0586</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.6087  0.6377  0.6377  0.6377</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se0    0.0673  0.0716  0.0716  0.0716</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.0764 -0.0513 -0.0513 -0.0078</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.0857  0.0916  0.0916  0.0912</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.3723  0.5759  0.5759  0.9321</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit.bt1' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## model fitting for competing risk data with covariates</span></span></span>
 <span class="r-in"><span><span class="va">fit2</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/tteICE-package.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>,</span></span>
@@ -266,28 +228,9 @@ Inference for Cumulative Incidences and Treatment Effects in Randomized Controll
 <span class="r-in"><span><span class="co">## model fitting for semicompeting risk data without covariates</span></span></span>
 <span class="r-in"><span><span class="va">fitscr1</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/tteICE-package.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t1</span>, <span class="va">d1</span><span class="op">)</span><span class="op">~</span><span class="va">A</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d2</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span> data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"composite"</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0):</span> arguments imply differing number of rows: 131, 95, 38</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fitscr1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Input:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tteICE(formula = Surv(t1, d1) ~ A, add.scr = ~Surv(t2, d2), data = bmt, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     strategy = "composite", method = "eff")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Data type: semicompeting risks </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Strategy: composite variable strategy </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimation method: semiparametrically efficient estimation </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Observations: 137 (including 99 treated and 38 control)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Maximum follow-up time: 2640 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> P-value of the average treatment effect: 0.5907 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> The estimated cumulative incidences and treatment effects at quartiles:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           660    1320    1980    2640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.5323  0.5864  0.5864  0.6299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se1    0.0501  0.0499  0.0499  0.0617</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.6087  0.6377  0.6377  0.6377</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se0    0.0803  0.0793  0.0793  0.0793</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.0764 -0.0513 -0.0513 -0.0078</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.0946  0.0937  0.0937  0.1005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.4192  0.5843  0.5843  0.9384</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fitscr1' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## model fitting for semicompeting risk data without covariates</span></span></span>
 <span class="r-in"><span><span class="va">fitscr2</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/tteICE-package.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t1</span>, <span class="va">d1</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>, <span class="op">~</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d2</span><span class="op">)</span>,</span></span>

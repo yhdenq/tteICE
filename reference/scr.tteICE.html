@@ -183,12 +183,14 @@ Inference for Cumulative Incidences and Treatment Effects in Randomized Controll
 <span class="r-in"><span><span class="co">## Composite variable strategy,</span></span></span>
 <span class="r-in"><span><span class="co">## nonparametric estimation without covariates</span></span></span>
 <span class="r-in"><span><span class="va">fit1</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/scr.tteICE.html">scr.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t1</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d1</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d2</span>, <span class="st">"composite"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0):</span> arguments imply differing number of rows: 131, 95, 38</span>
 <span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">fit10</span> <span class="op">=</span> <span class="fu"><a href="https://mephas.github.io/tteICE/reference/scr.tteICE.html">scr.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t1</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d1</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d2</span>, <span class="st">"aa"</span><span class="op">)</span> <span class="co">## warning message</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Please choose a strategy from the following:</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>  treatment, composite, natural, removed, whileon, principal</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>             composite variable strategy is used by default</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0):</span> arguments imply differing number of rows: 131, 95, 38</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Hypothetical strategy (natural effects),</span></span></span>
