@@ -93,7 +93,7 @@
 #' 
 #' @seealso \code{\link[tteICE]{surv.boot}}, \code{\link[tteICE]{scr.tteICE}}
 #'
-#' @export
+#' @keywords internal
 
 surv.tteICE <- function(A,Time,cstatus,strategy='composite',cov1=NULL,method='np',
                         weights=NULL,subset=NULL,na.rm=FALSE,nboot=0,seed=0){
