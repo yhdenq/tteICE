@@ -48,7 +48,6 @@
 #'
 #' @seealso \code{\link[tteICE]{surv.composite}}, \code{\link[tteICE]{surv.tteICE}}
 #'
-#'
 #' @keywords internal
 
 surv.composite.eff <- function(A,Time,cstatus,X=NULL){
