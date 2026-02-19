@@ -58,7 +58,6 @@
 #'
 #' @seealso \code{\link[tteICE]{scr.natural.eff}}, \code{\link[tteICE]{scr.tteICE}}
 #'
-#'
 #' @keywords internal
 
 scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A))){
@@ -138,8 +137,6 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
     haz3.0 = append(haz3.0, haz3t.0)
     F3t.01 = F2t.01 - F3t.n.01*exp(-haz3t.1)
     F3t.00 = F2t.00 - F3t.n.00*exp(-haz3t.0)
-    #F3t.01 = F3t.01 + (F2t.01-F3t.01)*dhaz3.1
-    #F3t.00 = F3t.00 + (F2t.00-F3t.00)*dhaz3.0
     haz1t.1 = haz1t.1 + dhaz1.1
     haz1t.0 = haz1t.0 + dhaz1.0
     haz2t.1 = haz2t.1 + dhaz2.1
@@ -150,8 +147,6 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
     haz1.0 = append(haz1.0, haz1t.0)
     haz2.1 = append(haz2.1, haz2t.1)
     haz2.0 = append(haz2.0, haz2t.0)
-    haz3.1 = append(haz3.1, haz3t.1)
-    haz3.0 = append(haz3.0, haz3t.0)
     F1.01 = append(F1.01, F1t.01)
     F1.00 = append(F1.00, F1t.00)
     F2.01 = append(F2.01, F2t.01)
