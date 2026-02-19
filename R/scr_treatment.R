@@ -57,7 +57,7 @@
 #' @seealso \code{\link[tteICE]{scr.treatment.eff}}, \code{\link[tteICE]{scr.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 scr.treatment <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A))){
   fit = surv.treatment(A,Time,status,weights)
