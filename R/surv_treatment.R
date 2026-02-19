@@ -25,6 +25,7 @@
 #' \item{ate}{Estimated treatment effect (difference in cumulative incidence functions).}
 #' \item{se}{Standard error of the estimated treatment effect.}
 #' \item{p.val}{P value of testing the treatment effect based on logrank test.}
+#' \item{cumhaz}{Baseline cumulative hazards in the survival models.}
 #' }
 #'
 #' @details
@@ -61,19 +62,21 @@ surv.treatment <- function(A,Time,cstatus,weights=rep(1,length(A))){
   s0 = (A==0); n0 = sum(s0)
   fit1 = survfitKM(factor(rep(1,n1)), Surv(Time,cstatus==1)[s1], weights=weights[s1])
   fit0 = survfitKM(factor(rep(0,n0)), Surv(Time,cstatus==1)[s0], weights=weights[s0])
-  cif1 = c(0, 1 - exp(-fit1$cumhaz))
-  cif0 = c(0, 1 - exp(-fit0$cumhaz))
+  tt1 = c(0,fit1$time)
+  tt0 = c(0,fit0$time)
+  tt = sort(unique(c(tt1,tt0)))
+  cumhaz1 = c(0, fit1$cumhaz)
+  cumhaz0 = c(0, fit0$cumhaz)
+  cif1 = 1 - exp(-cumhaz1)
+  cif0 = 1 - exp(-cumhaz0)
   se1 = c(0, fit1$std.err * fit1$surv)
   se0 = c(0, fit0$std.err * fit0$surv)
   se1[is.na(se1)] = rev(na.omit(se1))[1]
   se0[is.na(se0)] = rev(na.omit(se0))[1]
   surv_diff = survdiff(Surv(Time,cstatus==1)~A)
   p = pchisq(surv_diff$chisq, length(surv_diff$n)-1, lower.tail=FALSE)
-  tt1 = c(0,fit1$time)
-  tt0 = c(0,fit0$time)
-  tt = sort(unique(c(tt1,tt0)))
   ate = .matchy(cif1,tt1,tt)-.matchy(cif0,tt0,tt)
   se = sqrt(.matchy(se1,tt1,tt)^2+.matchy(se0,tt0,tt)^2)
   return(list(time1=tt1,time0=tt0,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
-              time=tt,ate=ate,se=se,p.val=p))
+              time=tt,ate=ate,se=se,p.val=p,cumhaz=cumhaz))
 }
