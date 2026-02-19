@@ -58,7 +58,7 @@
 #' @seealso \code{\link[tteICE]{scr.natural.eff}}, \code{\link[tteICE]{scr.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A))){
   Td = Time; Dd = status
