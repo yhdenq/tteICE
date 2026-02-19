@@ -32,6 +32,6 @@
 #'
 #' @export
 
-coef.tteICE <- function(object) {
+zph.tteICE <- function(object) {
   object$ph
 }
