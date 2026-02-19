@@ -171,11 +171,13 @@ fit10 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "aa") ## warning message
 ## Hypothetical strategy (natural effects),
 ## nonparametric estimation with inverse probability weighting
 fit2 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural", X, method='ipw')
+#> Error in data.frame(time = c(0, tseq), cumhaz11 = haz1.1, cumhaz10 = haz1.0,     cumhaz21 = haz2.1, cumhaz20 = haz2.0, cumhaz31 = haz3.1,     cumhaz30 = haz3.0): arguments imply differing number of rows: 109, 217
 
 ## nonparametric estimation with weights as non-standardized inverse probability score
 ps = predict(glm(A ~ X, family='binomial'), type='response')
 w = A/ps + (1-A)/(1-ps)
 fit2 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural", weights=w)
+#> Error in data.frame(time = c(0, tseq), cumhaz11 = haz1.1, cumhaz10 = haz1.0,     cumhaz21 = haz2.1, cumhaz20 = haz2.0, cumhaz31 = haz3.1,     cumhaz30 = haz3.0): arguments imply differing number of rows: 109, 217
 
 ## Hypothetical strategy (removing intercurrent events),
 ## semiparametrically efficient estimation with covariates
