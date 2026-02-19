@@ -51,7 +51,7 @@
 #' @seealso \code{\link[tteICE]{surv.whileon.eff}}, \code{\link[tteICE]{surv.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 surv.whileon <- function(A,Time,cstatus,weights=rep(1,length(A))){
   n = length(A)
