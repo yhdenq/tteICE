@@ -62,7 +62,6 @@
 #' 
 #' @seealso \code{\link[tteICE]{scr.natural}}, \code{\link[tteICE]{scr.tteICE}}
 #'
-#'
 #' @keywords internal
 
 scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
@@ -112,10 +111,8 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   lam_c = .matchy(lamc, time0, tt, TRUE)
   lam_c0 = sapply(1:l, function(t) lam_c[t]*exp(X%*%fit0c$coefficients))
   ips = .ipscore(A,X)
-
   cumhaz = data.frame(time=tt, cumhaz11=cumsum(lam_d1), cumhaz10=cumsum(lam_d0),
                      cumhaz21=cumsum(lam_r1), cumhaz20=cumsum(lam_r0))
-  if (tt[1]!=0) cumhaz = rbind(0,cumhaz)
 
   # observable incidence
   lam_od_A = A*lam_od1 + (1-A)*lam_od0
@@ -244,6 +241,7 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   if (tt[1]>0) {
     tt = c(0,tt); cif1 = c(0,cif1); cif0 = c(0,cif0)
     se1 = c(0,se1); se0 = c(0,se0); ate = c(0,ate); se = c(0,se)
+    cumhaz = rbind(0, cumhaz)
   }
   coef11 = fit11$coefficients / attr(X,"scaled:scale")
   coef10 = fit10$coefficients / attr(X,"scaled:scale")
