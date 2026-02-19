@@ -12,7 +12,7 @@
 #' group, \code{coef0} is the coefficients in the control group. For other strategies, Cox models are fitted for 
 #' each event (primary outcome event and intercurrent event). In these strategies, \code{coef11} is the coefficients 
 #' for the primary outcome event in the treatment group, \code{coef10} is the coefficients for the primary outcome 
-#' event in the control group, \code{coef21} is the coefficients for the inercurrent event in the treated group, 
+#' event in the control group, \code{coef21} is the coefficients for the intercurrent event in the treated group, 
 #' \code{coef20} is the coefficients for the intercurrent in the control group.
 #'
 #' @export
