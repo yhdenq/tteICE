@@ -100,9 +100,11 @@ surv.composite.eff <- function(A,Time,cstatus,X=NULL){
   p = 2*pnorm(-abs(Tt/Vt))
   coef1 = fit1$coefficients
   coef0 = fit0$coefficients
+  coef = list(coef1=coef1,coef0=coef0)
   ph1 = cox.zph(fit1)
   ph0 = cox.zph(fit0)
+  ph = list(ph1=ph1,ph0=ph0)
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
-             coef1=coef1,coef0=coef0,ph1=ph1,ph0=ph0))
+              coef=coef,ph=ph))
 }
