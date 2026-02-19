@@ -5,6 +5,20 @@
 #' @param object 
 #' A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.
 #'
+#' @examples
+#' ## load data
+#' data(bmt)
+#' bmt = transform(bmt, d4=d2+d3)
+#' A = as.numeric(bmt$group>1)
+#' X = as.matrix(bmt[,c('z1','z3','z5')])
+#' bmt$A = A
+#' library(survival)
+#' fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
+#'  data=bmt, strategy="whileon", method='eff')
+#' print(fit$ph)
+#' plot(fit$ph$ph11)
+#' plot(fit$ph$ph10)
+#'
 #' @return
 #' A list of P-values of testing the proportional hazards (PH) assumption in the working Cox models, for each 
 #' covariate and a global test, stratified by treatment groups. 
