@@ -25,6 +25,7 @@
 #' \item{ate}{Estimated treatment effect (difference in cumulative incidence functions).}
 #' \item{se}{Standard error of the estimated treatment effect.}
 #' \item{p.val}{P value of testing the treatment effect based on Gray test.}
+#' \item{cumhaz}{Baseline cumulative hazards in the survival models.}
 #' }
 #'
 #' @details
@@ -63,10 +64,12 @@ surv.whileon <- function(A,Time,cstatus,weights=rep(1,length(A))){
   fit20 = survfitKM(factor(rep(0,n0)), Surv(Time,cstatus>1)[s0], weights=weights[s0])
   time1 = c(0, fit11$time)
   time0 = c(0, fit10$time)
+  tt = sort(unique(c(time1,time0)))
   fit11 = rbind(0,cbind(fit11$cumhaz,fit11$std.err))
   fit10 = rbind(0,cbind(fit10$cumhaz,fit10$std.err))
   fit21 = rbind(0,cbind(fit21$cumhaz,fit21$std.err))
   fit20 = rbind(0,cbind(fit20$cumhaz,fit20$std.err))
+  cumhaz = data.frame(time=tt,cumhaz11=fit11[,1],cumhaz10=fit10[,1],cumhaz21=fit21[,1],cumhaz20=fit20[,1])
   dcif1 = exp(-fit11[,1]-fit21[,1])*diff(c(0,fit11[,1]))
   dcif0 = exp(-fit10[,1]-fit20[,1])*diff(c(0,fit10[,1]))
   cif1 = cumsum(dcif1)
@@ -93,10 +96,9 @@ surv.whileon <- function(A,Time,cstatus,weights=rep(1,length(A))){
     2*cif0*cumsum(M1*(exp(-fit10[,1]-fit20[,1])+cif0))
   G0 = cumsum(M0)*cif0^2 + cumsum(M0*cif0^2) - 2*cif0*cumsum(M0*cif0)
   se0 = sqrt(G1+G0)
-  tt = sort(unique(c(time1,time0)))
   ate = .matchy(cif1,time1,tt)-.matchy(cif0,time0,tt)
   se = sqrt(.matchy(se1,time1,tt)^2+.matchy(se0,time0,tt)^2)
   p = cuminc(Time,cstatus,group=A)$Tests[1,2]
   return(list(time1=time1,time0=time0,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
-              time=tt,ate=ate,se=se,p.val=p))
+              time=tt,ate=ate,se=se,p.val=p,cumhaz=cumhaz))
 }
