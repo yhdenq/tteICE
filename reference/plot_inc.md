@@ -120,25 +120,24 @@ plot_inc(fit)
 
 ## model fitting using competing risk data
 fit1 = surv.tteICE(A, bmt$t2, bmt$d4, 'treatment')
-#> Error in surv.treatment(A, Time, cstatus, weights * ips): object 'cumhaz' not found
 
 ## plot asymptotic confidence intervals based on explicit formulas
 plot_inc(fit1, ylim=c(0,1),
          plot.configs=list(legend=c('AML','ALL'), show.p.value=FALSE) )
-#> Error: object 'fit1' not found
+
 
 ## plot bootstrap confidence intervals
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, 'treatment', nboot=50)
-#> Error in surv.treatment(A, Time, cstatus, weights * ips): object 'cumhaz' not found
 plot_inc(fit2, ylim=c(0,1),
          plot.configs=list(legend=c('AML','ALL')))
-#> Error: object 'fit2' not found
+
 
 ## model fitting using semicompeting risk data
 fit3 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
 
 ## plot asymptotic confidence intervals based on explicit formulas
 plot_inc(fit3, ylim=c(0,1), plot.configs=list(add.null.line=FALSE))
+
 
 ## plot bootstrap confidence intervals
 fit4 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2,
