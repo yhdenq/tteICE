@@ -44,7 +44,7 @@
 #' @seealso \code{\link[tteICE]{surv.principal.eff}}, \code{\link[tteICE]{surv.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 surv.principal <- function(A,Time,cstatus,weights=rep(1,length(A))){
   n = length(A)
