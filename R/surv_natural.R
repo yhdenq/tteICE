@@ -25,6 +25,7 @@
 #' \item{ate}{Estimated treatment effect (difference in cumulative incidence functions).}
 #' \item{se}{Standard error of the estimated treatment effect.}
 #' \item{p.val}{P value of testing the treatment effect based on logrank test.}
+#' \item{cumhaz}{Baseline cumulative hazards in the survival models.}
 #' }
 #'
 #' @details
@@ -67,6 +68,7 @@ surv.natural <- function(A,Time,cstatus,weights=rep(1,length(A))){
   fit11 = .matchy(rbind(0,cbind(fit11$cumhaz,fit11$std.err)),c(0,fit11$time),time)
   fit10 = .matchy(rbind(0,cbind(fit10$cumhaz,fit10$std.err)),c(0,fit10$time),time)
   fit20 = .matchy(rbind(0,cbind(fit20$cumhaz,fit20$std.err)),c(0,fit20$time),time)
+  cumhaz = data.frame(time=time,cumhaz11=fit11[,1],cumhaz10=fit10[,1],cumhaz20=fit20[,1])
   dcif1 = exp(-fit11[,1]-fit20[,1])*diff(c(0,fit11[,1]))
   dcif0 = exp(-fit10[,1]-fit20[,1])*diff(c(0,fit10[,1]))
   cif1 = cumsum(dcif1)
@@ -95,5 +97,5 @@ surv.natural <- function(A,Time,cstatus,weights=rep(1,length(A))){
   p = pchisq(surv_diff$chisq, length(surv_diff$n)-1, lower.tail=FALSE)
   ate = cif1-cif0
   return(list(time1=time,time0=time,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
-              time=time,ate=ate,se=se,p.val=p))
+              time=time,ate=ate,se=se,p.val=p,cumhaz=cumhaz))
 }
