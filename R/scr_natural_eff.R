@@ -237,7 +237,18 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
     tt = c(0,tt); cif1 = c(0,cif1); cif0 = c(0,cif0)
     se1 = c(0,se1); se0 = c(0,se0); ate = c(0,ate); se = c(0,se)
   }
+  coef11 = fit11$coefficients
+  coef10 = fit10$coefficients
+  coef21 = fit21$coefficients
+  coef20 = fit20$coefficients
+  coef = list(coef11=coef11,coef10=coef10,coef21=coef21,coef20=coef20)
+  ph11 = cox.zph(fit11)
+  ph10 = cox.zph(fit10)
+  ph21 = cox.zph(fit21)
+  ph20 = cox.zph(fit20)
+  ph = list(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
 
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
-              time=tt,ate=ate,se=se,p.val=p))
+              time=tt,ate=ate,se=se,p.val=p,
+              coef=coef,ph=ph))
 }
