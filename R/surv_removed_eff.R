@@ -29,6 +29,7 @@
 #' the restricted mean survival time lost by the end of study.}
 #' \item{coef}{Coefficients of covariates in the working Cox models for each event.}
 #' \item{ph}{P values of the proportional hazards assumption in the working Cox models for each event.}
+#' \item{cumhaz}{Baseline cumulative hazards in the working Cox models.}
 #' }
 #'
 #' @details
@@ -51,7 +52,6 @@
 #' }
 #'
 #' @seealso \code{\link[tteICE]{surv.removed}}, \code{\link[tteICE]{surv.tteICE}}
-#'
 #'
 #' @keywords internal
 
@@ -79,12 +79,13 @@ surv.removed.eff <- function(A,Time,cstatus,X=NULL){
   Xb1c = X%*%fit1c$coefficients
   Xb0c = X%*%fit0c$coefficients
   cumhaz11 = .matchy(c(0,basehaz(fit11,centered=FALSE)$hazard),tt1,tt)
-  cumhaz11 = exp(Xb11)%*%t(cumhaz11)
   cumhaz10 = .matchy(c(0,basehaz(fit10,centered=FALSE)$hazard),tt0,tt)
-  cumhaz10 = exp(Xb10)%*%t(cumhaz10)
   cumhaz21 = .matchy(c(0,basehaz(fit21,centered=FALSE)$hazard),c(0,basehaz(fit21)$time),tt)
-  cumhaz21 = exp(Xb21)%*%t(cumhaz21)
   cumhaz20 = .matchy(c(0,basehaz(fit20,centered=FALSE)$hazard),c(0,basehaz(fit20)$time),tt)
+  cumhaz = data.frame(time=tt,cumhaz11=cumhaz11,cumhaz10=cumhaz10,cumhaz21=cumhaz21,cumhaz20=cumhaz20)
+  cumhaz11 = exp(Xb11)%*%t(cumhaz11)
+  cumhaz10 = exp(Xb10)%*%t(cumhaz10)
+  cumhaz21 = exp(Xb21)%*%t(cumhaz21)
   cumhaz20 = exp(Xb20)%*%t(cumhaz20)
   cumhaz1c = .matchy(c(0,basehaz(fit1c,centered=FALSE)$hazard),c(0,basehaz(fit1c)$time),tt)
   cumhaz0c = .matchy(c(0,basehaz(fit0c,centered=FALSE)$hazard),c(0,basehaz(fit0c)$time),tt)
@@ -118,12 +119,12 @@ surv.removed.eff <- function(A,Time,cstatus,X=NULL){
   coef21 = fit21$coefficients
   coef20 = fit20$coefficients
   coef = list(coef11=coef11,coef10=coef10,coef21=coef21,coef20=coef20)
-  ph11 = cox.zph(fit11, terms=FALSE)
-  ph10 = cox.zph(fit10, terms=FALSE)
-  ph21 = cox.zph(fit21, terms=FALSE)
-  ph20 = cox.zph(fit20, terms=FALSE)
+  ph11 = cox.zph(fit11, terms=FALSE) * attr(X,"scaled:scale")
+  ph10 = cox.zph(fit10, terms=FALSE) * attr(X,"scaled:scale")
+  ph21 = cox.zph(fit21, terms=FALSE) * attr(X,"scaled:scale")
+  ph20 = cox.zph(fit20, terms=FALSE) * attr(X,"scaled:scale")
   ph = list(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
-             coef=coef,ph=ph))
+              coef=coef,ph=ph,cumhaz=cumhaz))
 }
