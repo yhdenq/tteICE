@@ -1,6 +1,6 @@
 #' @title Baseline hazards of 'tteICE' objects
 #'
-#' @description This function extracts the baseline cumulative hazards in the survival models.
+#' @description This function extracts the baseline cumulative hazards in the survival models
 #'
 #' @param object 
 #' A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.
