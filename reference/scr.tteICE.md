@@ -182,4 +182,5 @@ fit2 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural", weights=w)
 ## Hypothetical strategy (removing intercurrent events),
 ## semiparametrically efficient estimation with covariates
 fit3 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "removed", X, method='eff')
+#> Error in cox.zph(fit11, terms = FALSE) * attr(X, "scaled:scale"): non-numeric argument to binary operator
 ```
