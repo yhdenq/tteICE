@@ -140,10 +140,10 @@ surv.natural.eff <- function(A,Time,cstatus,X=NULL){
   coef21 = fit21$coefficients
   coef20 = fit20$coefficients
   coef = list(coef11=coef11,coef10=coef10,coef21=coef21,coef20=coef20)
-  ph11 = cox.zph(fit11)
-  ph10 = cox.zph(fit10)
-  ph21 = cox.zph(fit21)
-  ph20 = cox.zph(fit20)
+  ph11 = cox.zph(fit11, terms=FALSE)
+  ph10 = cox.zph(fit10, terms=FALSE)
+  ph21 = cox.zph(fit21, terms=FALSE)
+  ph20 = cox.zph(fit20, terms=FALSE)
   ph = list(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
