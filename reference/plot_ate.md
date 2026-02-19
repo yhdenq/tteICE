@@ -116,17 +116,15 @@ bmt$A = A
 ## simple model fitting and plotting
 library(survival)
 fit = tteICE(Surv(t2,d4,type = "mstate")~A, data=bmt)
-#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 plot_ate(fit)
-#> Error: object 'fit' not found
+
 
 ## model fitting using competing risk data
 fit1 = surv.tteICE(A, bmt$t2, bmt$d4, 'composite')
-#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 
 ## Plot asymptotic confidence intervals based on explicit formulas
 plot_ate(fit1, ylim=c(-0.4,0.4))
-#> Error: object 'fit1' not found
+
 
 ## Plot bootstrap confidence intervals
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, 'natural', nboot=50) ## SE=0??
@@ -135,19 +133,17 @@ plot_ate(fit2, ylim=c(-0.4,0.4))
 
 ## Model with semicompeting risk data
 fit3 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 
 ## Plot asymptotic confidence intervals based on explicit formulas
 plot_ate(fit3, ylim=c(-0.4,0.4),
          plot.configs=list(add.null.line=FALSE))
-#> Error: object 'fit3' not found
+
 
 ## Plot bootstrap confidence intervals
 fit4 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2,
                   "composite", nboot=50)           ## SE=0??
-#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 
 plot_ate(fit4, ylim=c(-0.4,0.4),
          plot.configs=list(add.null.line=FALSE, lty=2, main=""))
-#> Error: object 'fit4' not found
+
 ```

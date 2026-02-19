@@ -48,14 +48,58 @@ X = as.matrix(bmt[,c('z1','z3','z5')])
 ## Composite variable strategy,
 ## nonparametric estimation without covariates
 fit1 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 summary(fit1)
-#> Error: object 'fit1' not found
+#> $call
+#> scr.tteICE(A = A, Time = bmt$t1, status = bmt$d1, Time_int = bmt$t2, 
+#>     status_int = bmt$d2, strategy = "composite")
+#> 
+#> $dtype
+#> [1] "smcmprsk"
+#> 
+#> $strategy
+#> [1] "composite"
+#> 
+#> $method
+#> [1] "np"
+#> 
+#> $maxt
+#> [1] 2640
+#> 
+#> $n
+#> [1] 137
+#> 
+#> $n1
+#> [1] 99
+#> 
+#> $n0
+#> [1] 38
+#> 
+#> $p.val
+#> [1] 0.5906978
+#> 
+#> $est
+#>               660        1320        1980         2640
+#> CIF1   0.53226259  0.58641246  0.58641246  0.629905604
+#> se1    0.05012612  0.04988569  0.04988569  0.061748891
+#> CIF0   0.60870186  0.63767315  0.63767315  0.637673151
+#> se0    0.08026005  0.07929563  0.07929563  0.079295626
+#> ATE   -0.07643926 -0.05126070 -0.05126070 -0.007767547
+#> se     0.09462718  0.09368233  0.09368233  0.100502347
+#> p.val  0.41920919  0.58425802  0.58425802  0.938395060
+#> 
+#> attr(,"class")
+#> [1] "summary.tteICE"
 
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 predict(fit2)
-#> Error: object 'fit2' not found
+#>               660        1320        1980         2640
+#> CIF1   0.53226259  0.58641246  0.58641246  0.629905604
+#> se1    0.05012612  0.04988569  0.04988569  0.061748891
+#> CIF0   0.60870186  0.63767315  0.63767315  0.637673151
+#> se0    0.08026005  0.07929563  0.07929563  0.079295626
+#> ATE   -0.07643926 -0.05126070 -0.05126070 -0.007767547
+#> se     0.09462718  0.09368233  0.09368233  0.100502347
+#> p.val  0.41920919  0.58425802  0.58425802  0.938395060
 
 library(survival)
 fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, 
