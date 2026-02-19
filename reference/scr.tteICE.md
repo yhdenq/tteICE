@@ -160,14 +160,14 @@ X = as.matrix(bmt[,c('z1','z3','z5')])
 ## Composite variable strategy,
 ## nonparametric estimation without covariates
 fit1 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 # \donttest{
 fit10 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "aa") ## warning message
 #> Warning: Please choose a strategy from the following:
 #>  treatment, composite, natural, removed, whileon, principal
 #> 
 #>             composite variable strategy is used by default
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 # }
 
 ## Hypothetical strategy (natural effects),

@@ -48,12 +48,12 @@ X = as.matrix(bmt[,c('z1','z3','z5')])
 ## Composite variable strategy,
 ## nonparametric estimation without covariates
 fit1 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 summary(fit1)
 #> Error: object 'fit1' not found
 
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 predict(fit2)
 #> Error: object 'fit2' not found
 

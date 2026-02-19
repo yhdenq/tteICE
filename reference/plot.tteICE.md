@@ -101,7 +101,7 @@ bmt$A = A
 ## simple model fitting and plotting
 library(survival)
 fit1 = tteICE(Surv(t2,d4,type = "mstate")~A, data=bmt)
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 plot(fit1, type="ate")
 #> Error: object 'fit1' not found
 plot(fit1, type="inc")
@@ -110,14 +110,14 @@ plot(fit1, type="inc")
 
 ## plot cumulative incidence functions with p-values
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 plot(fit2, type="inc", decrease=TRUE, ylim=c(0,1),
      plot.configs=list(show.p.value=TRUE))
 #> Error: object 'fit2' not found
 
 ## plot treatment effects for semicompeting risk data
 fit3 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 plot(fit3, type="ate", ylim=c(-1,1), xlab="time",
      plot.configs=list(col="red"))
 #> Error: object 'fit3' not found

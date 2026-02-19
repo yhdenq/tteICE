@@ -61,14 +61,14 @@ X = as.matrix(bmt[,c('z1','z3','z5')])
 ## predict results at specified time points
 ## model fitting using semicompeting risk data
 fit1 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 predict(fit1, timeset=c(670,2000))
 #> Error: object 'fit1' not found
 
 ## predict results without specifying any time points
 ## model fitting using competing risk data
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 predict(fit2)
 #> Error: object 'fit2' not found
 

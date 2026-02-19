@@ -177,7 +177,7 @@ library(survival)
 ## model fitting for competing risk data without covariates
 fit1 = tteICE(Surv(t2, d4, type = "mstate")~A,
  data=bmt, strategy="composite", method='eff')
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 print(fit1)
 #> Error: object 'fit1' not found
 
@@ -185,7 +185,7 @@ print(fit1)
 ## with bootstrap confidence intervals
 fit.bt1 = tteICE(Surv(t2, d4, type = "mstate")~A,
  data=bmt, strategy="composite", method='eff', nboot=20, seed=2)
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 print(fit.bt1)
 #> Error: object 'fit.bt1' not found
 
@@ -218,7 +218,7 @@ print(fit2)
 ## model fitting for semicompeting risk data without covariates
 fitscr1 = tteICE(Surv(t1, d1)~A, ~Surv(t2, d2),
  data=bmt, strategy="composite", method='eff')
-#> Error in data.frame(time = tt, cumhaz1 = haz1, cumhaz0 = haz0): arguments imply differing number of rows: 131, 95, 38
+#> Error in data.frame(time = tt, cumhaz1 = cumhaz1, cumhaz0 = cumhaz0): arguments imply differing number of rows: 131, 95, 38
 print(fitscr1)
 #> Error: object 'fitscr1' not found
 
