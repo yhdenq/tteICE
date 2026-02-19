@@ -88,13 +88,13 @@
 #'
 #' ## Plot bootstrap confidence intervals
 #' fit4 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2,
-#'                   "composite", nboot=50)           ## SE=0??
+#'                   "composite", nboot=50)
 #'
 #' plot_ate(fit4, ylim=c(-0.4,0.4),
 #'          plot.configs=list(add.null.line=FALSE, lty=2, main=""))
 #'
 #' @return Plot the average treatment effect (ATE) results from a tteICE object
-#' @export
+#' @keywords internal
 
 plot_ate <- function(fit,decrease=FALSE,conf.int=.95,
   xlab='Time',ylim=c(-1,1),xlim=NULL,
