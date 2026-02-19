@@ -33,6 +33,7 @@
 #' the restricted mean survival time lost by the end of study.}
 #' \item{coef}{Coefficients of covariates in the working Cox models for each event.}
 #' \item{ph}{P values of the proportional hazards assumption in the working Cox models for each event.}
+#' \item{cumhaz}{Baseline cumulative hazards in the working Cox models.}
 #' }
 #'
 #' @details
@@ -80,26 +81,26 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   l = length(tt)
   fit11 = coxph(cox_formula, data=mg, cluster=mg$id, subset=(A==1))
   time1 = basehaz(fit11,centered=FALSE)$time
-  lamd = diff(c(0,basehaz(fit11,centered=FALSE)$hazard))
-  lam_d = .matchy(lamd, time1, tt, TRUE)
-  lam_od1 = sapply(1:l, function(t) lam_d[t]*exp( X%*%fit11$coefficients[-1]))
+  lamd1 = diff(c(0,basehaz(fit11,centered=FALSE)$hazard))
+  lam_d1 = .matchy(lamd1, time1, tt, TRUE)
+  lam_od1 = sapply(1:l, function(t) lam_d1[t]*exp(X%*%fit11$coefficients[-1]))
   lam_ord1 = lam_od1 * exp(fit11$coefficients[1])
   fit10 = coxph(cox_formula, data=mg, cluster=mg$id, subset=(A==0))
   time0 = basehaz(fit10,centered=FALSE)$time
-  lamd = diff(c(0,basehaz(fit10,centered=FALSE)$hazard))
-  lam_d = .matchy(lamd, time0, tt, TRUE)
-  lam_od0 = sapply(1:l, function(t) lam_d[t]*exp(X%*%fit10$coefficients[-1]))
+  lamd0 = diff(c(0,basehaz(fit10,centered=FALSE)$hazard))
+  lam_d0 = .matchy(lamd0, time0, tt, TRUE)
+  lam_od0 = sapply(1:l, function(t) lam_d0[t]*exp(X%*%fit10$coefficients[-1]))
   lam_ord0 = lam_od0 * exp(fit10$coefficients[1])
   fit21 = coxph(Surv(Time_int,status_int)~X, subset=(A==1))
   time1 = basehaz(fit21,centered=FALSE)$time
-  lamr = diff(c(0,basehaz(fit21,centered=FALSE)$hazard))
-  lam_r = .matchy(lamr, time1, tt, TRUE)
-  lam_or1 = sapply(1:l, function(t) lam_r[t]*exp(X%*%fit21$coefficients))
+  lamr1 = diff(c(0,basehaz(fit21,centered=FALSE)$hazard))
+  lam_r1 = .matchy(lamr1, time1, tt, TRUE)
+  lam_or1 = sapply(1:l, function(t) lam_r1[t]*exp(X%*%fit21$coefficients))
   fit20 = coxph(Surv(Time_int,status_int)~X, subset=(A==0))
   time0 = basehaz(fit20,centered=FALSE)$time
-  lamr = diff(c(0,basehaz(fit20,centered=FALSE)$hazard))
-  lam_r = .matchy(lamr, time0, tt, TRUE)
-  lam_or0 = sapply(1:l, function(t) lam_r[t]*exp(X%*%fit20$coefficients))
+  lamr0 = diff(c(0,basehaz(fit20,centered=FALSE)$hazard))
+  lam_r0 = .matchy(lamr0, time0, tt, TRUE)
+  lam_or0 = sapply(1:l, function(t) lam_r0[t]*exp(X%*%fit20$coefficients))
   fit1c = coxph(Surv(Time,status==0)~X, subset=(A==1))
   time1 = basehaz(fit1c,centered=FALSE)$time
   lamc = diff(c(0,basehaz(fit1c,centered=FALSE)$hazard))
@@ -111,6 +112,10 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   lam_c = .matchy(lamc, time0, tt, TRUE)
   lam_c0 = sapply(1:l, function(t) lam_c[t]*exp(X%*%fit0c$coefficients))
   ips = .ipscore(A,X)
+
+  cumhaz = data.frame(time=tt, cumhaz11=cumsum(lam_d1), cumhaz10=cumsum(lam_d0),
+                     cumhaz21=cumsum(lam_r1), cumhaz20=cumsum(lam_r0))
+  if (tt[1]!=0) cumhaz = rbind(0,cumhaz)
 
   # observable incidence
   lam_od_A = A*lam_od1 + (1-A)*lam_od0
@@ -240,10 +245,10 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
     tt = c(0,tt); cif1 = c(0,cif1); cif0 = c(0,cif0)
     se1 = c(0,se1); se0 = c(0,se0); ate = c(0,ate); se = c(0,se)
   }
-  coef11 = fit11$coefficients
-  coef10 = fit10$coefficients
-  coef21 = fit21$coefficients
-  coef20 = fit20$coefficients
+  coef11 = fit11$coefficients * attr(X,"scaled:scale")
+  coef10 = fit10$coefficients * attr(X,"scaled:scale")
+  coef21 = fit21$coefficients * attr(X,"scaled:scale")
+  coef20 = fit20$coefficients * attr(X,"scaled:scale")
   coef = list(coef11=coef11,coef10=coef10,coef21=coef21,coef20=coef20)
   ph11 = cox.zph(fit11, terms=FALSE)
   ph10 = cox.zph(fit10, terms=FALSE)
@@ -253,5 +258,5 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
 
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
-              coef=coef,ph=ph))
+              coef=coef,ph=ph,cumhaz=cumhaz))
 }
