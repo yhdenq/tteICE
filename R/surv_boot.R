@@ -34,7 +34,7 @@
 #' \code{\link[tteICE]{surv.tteICE}}, \code{\link[tteICE]{scr.tteICE}}, 
 #' \code{\link[tteICE]{tteICE}}
 #'
-#' @export
+#' @keywords internal
 
 surv.boot <- function(fit,nboot=0,seed=NULL){
   N = length(fit$A)
