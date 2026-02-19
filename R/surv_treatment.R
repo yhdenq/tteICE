@@ -53,7 +53,7 @@
 #' @seealso \code{\link[tteICE]{surv.treatment.eff}}, \code{\link[tteICE]{surv.tteICE}}
 #'
 #'
-#' @export
+#' @keywords internal
 
 surv.treatment <- function(A,Time,cstatus,weights=rep(1,length(A))){
   n = length(A)
