@@ -6,7 +6,7 @@
 #' A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.
 #'
 #' @return
-#' A list of coefficients of standardized covariates in the working Cox models, stratified by treatment groups. 
+#' A list of coefficients of covariates in the working Cox models, stratified by treatment groups. 
 #' For the treatment policy strategy and composite variable strategy, only one Cox model is fit (for the primary 
 #' outcome event or the composite event). In these two strategies, \code{coef1} is the coefficients in the treated 
 #' group, \code{coef0} is the coefficients in the control group. For other strategies, Cox models are fitted for 
