@@ -94,11 +94,6 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
     dhaz3.0 = sum((1-A)*weights*(Td==t0)*Dd*Dr)/Y3.0
     if (Y3.0==0) dhaz3.0 = 0
 
-    cumhaz = data.frame(time=tseq, cumhaz11=cumsum(dhaz1.1), cumhaz10=cumsum(dhaz1.0),
-                       cumhaz21=cumsum(dhaz2.1), cumhaz20=cumsum(dhaz2.0),
-                       cumhaz31=cumsum(dhaz3.1), cumhaz30=cumsum(dhaz3.0))
-    if (tseq[1]!=0) cumhaz = rbind(0,cumhaz)
-
     dG1.1.01 = dhaz1.1/Y1.1
     dG1.1.00 = dhaz1.0/Y1.0
     dG1.2.01 = F3t.n.01*dhaz1.1/Y1.1
@@ -155,6 +150,8 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
     haz1.0 = append(haz1.0, haz1t.0)
     haz2.1 = append(haz2.1, haz2t.1)
     haz2.0 = append(haz2.0, haz2t.0)
+    haz3.1 = append(haz3.1, haz3t.1)
+    haz3.0 = append(haz3.0, haz3t.0)
     F1.01 = append(F1.01, F1t.01)
     F1.00 = append(F1.00, F1t.00)
     F2.01 = append(F2.01, F2t.01)
@@ -162,6 +159,11 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
     F3.01 = append(F3.01, F3t.01)
     F3.00 = append(F3.00, F3t.00)
   }
+  
+  cumhaz = data.frame(time=c(0,tseq), cumhaz11=haz1.1, cumhaz10=haz1.0,
+                       cumhaz21=haz2.1, cumhaz20=haz2.0,
+                       cumhaz31=haz3.1, cumhaz30=haz3.0)
+  
   Fhaz.01 = 1-F1.01-F3.01
   Fhaz.00 = 1-F1.00-F3.00
   G1.01 = Fhaz.01^2*cumsum(G1.1.01)-
@@ -196,6 +198,7 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
   if (tseq[1]==0){
     tseq = tseq[-1]; cif2 = cif2[-1]; cif0 = cif0[-1]
     se2 = se2[-1]; se0 = se0[-1]; ate = ate[-1]; se = se[-1]
+    cumhaz = cumhaz[-1,]
   }
   tseq = c(0,tseq)
   surv_diff = survdiff(Surv(Td,Dd)~A)
