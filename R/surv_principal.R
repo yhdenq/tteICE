@@ -62,7 +62,8 @@ surv.principal <- function(A,Time,cstatus,weights=rep(1,length(A))){
   fit10 = rbind(0,cbind(fit10$cumhaz,fit10$std.err))
   fit21 = rbind(0,cbind(fit21$cumhaz,fit21$std.err))
   fit20 = rbind(0,cbind(fit20$cumhaz,fit20$std.err))
-  cumhaz = data.frame(time=tt,cumhaz11=fit11[,1],cumhaz10=fit10[,1],cumhaz21=fit21[,1],cumhaz20=fit20[,1])
+  cumhaz = data.frame(time=tt,cumhaz11=.matchy(fit11[,1],time1,tt),cumhaz10=.matchy(fit10[,1],time0,tt),
+                      cumhaz21=.matchy(fit21[,1],time1,tt),cumhaz20=.matchy(fit20[,1],time0,tt))
   S1 = exp(-fit11[,1]-fit21[,1])
   S0 = exp(-fit10[,1]-fit20[,1])
   dcif1 = S1*diff(c(0,fit11[,1]))
