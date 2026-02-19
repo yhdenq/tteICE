@@ -29,6 +29,7 @@
 #' \item{ate}{Estimated treatment effect (difference in cumulative incidence functions).}
 #' \item{se}{Standard error of the estimated treatment effect.}
 #' \item{p.val}{P value of testing the treatment effect based on logrank test.}
+#' \item{cumhaz}{Baselime cumulative hazards in the survival models.}
 #' }
 #'
 #' @details
@@ -92,6 +93,11 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
     Y3.0 = sum((1-A)*weights*(Td>=t0)*(Tr<=t0)*Dr)
     dhaz3.0 = sum((1-A)*weights*(Td==t0)*Dd*Dr)/Y3.0
     if (Y3.0==0) dhaz3.0 = 0
+
+    cumhaz = data.frame(time=tseq, cumhaz11=cumsum(dhaz1.1), cumhaz10=cumsum(dhaz1.0),
+                       cumhaz21=cumsum(dhaz2.1), cumhaz20=cumsum(dhaz2.0),
+                       cumhaz31=cumsum(dhaz3.1), cumhaz30=cumsum(dhaz3.0))
+    if (tseq[1]!=0) cumhaz = rbind(0,cumhaz)
 
     dG1.1.01 = dhaz1.1/Y1.1
     dG1.1.00 = dhaz1.0/Y1.0
@@ -195,5 +201,5 @@ scr.natural <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A
   surv_diff = survdiff(Surv(Td,Dd)~A)
   p = pchisq(surv_diff$chisq, length(surv_diff$n)-1, lower.tail=FALSE)
   return(list(time1=tseq,time0=tseq,cif1=cif2,cif0=cif0,se1=se2,se0=se0,
-              time=tseq,ate=ate,se=se,p.val=p))
+              time=tseq,ate=ate,se=se,p.val=p,cumhaz=cumhaz))
 }
