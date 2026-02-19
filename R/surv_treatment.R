@@ -53,7 +53,6 @@
 #'
 #' @seealso \code{\link[tteICE]{surv.treatment.eff}}, \code{\link[tteICE]{surv.tteICE}}
 #'
-#'
 #' @keywords internal
 
 surv.treatment <- function(A,Time,cstatus,weights=rep(1,length(A))){
@@ -73,6 +72,7 @@ surv.treatment <- function(A,Time,cstatus,weights=rep(1,length(A))){
   se0 = c(0, fit0$std.err * fit0$surv)
   se1[is.na(se1)] = rev(na.omit(se1))[1]
   se0[is.na(se0)] = rev(na.omit(se0))[1]
+  cumhaz = data.frame(time=tt,cumhaz1=.matchy(cumhaz1,tt1,tt),cumhaz0=.matchy(cumhaz0,tt0,tt))
   surv_diff = survdiff(Surv(Time,cstatus==1)~A)
   p = pchisq(surv_diff$chisq, length(surv_diff$n)-1, lower.tail=FALSE)
   ate = .matchy(cif1,tt1,tt)-.matchy(cif0,tt0,tt)
