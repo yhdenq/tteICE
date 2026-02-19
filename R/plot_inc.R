@@ -86,12 +86,12 @@
 #'
 #' ## plot bootstrap confidence intervals
 #' fit4 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2,
-#'                   "composite", nboot=50) ##??
+#'                   "composite", nboot=50)
 #' plot_inc(fit4, ylim=c(0,1),
 #'          plot.configs=list(lty=2, lwd=3, main="My title"))
 #'
 #' @return Plot the cumulative incidence function results from a tteICE object
-#' @export
+#' @keywords internal
 
 plot_inc <- function(fit,decrease=FALSE,conf.int=.95,
   xlab='Time',xlim=NULL,ylim=c(0,1),
