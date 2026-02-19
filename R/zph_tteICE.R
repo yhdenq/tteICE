@@ -5,7 +5,10 @@
 #' @param object 
 #' A fitted object returned by the function \code{tteICE}, \code{surv.tteICE}, or \code{scr.tteICE}.
 #'
-#' @keywords internal
+#' @return
+#' P-values of testing the proportional hazards (PH) assumption in the working Cox models, stratified by treatment groups.
+#'
+#' @export
 
 coef.tteICE <- function(object) {
   object$ph
