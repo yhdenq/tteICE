@@ -15,7 +15,8 @@
 #' each event (primary outcome event and intercurrent event). In these strategies, \code{coef11} is the coefficients
 #' for the primary outcome event in the treatment group, \code{coef10} is the coefficients for the primary outcome
 #' event in the control group, \code{coef21} is the coefficients for the intercurrent event in the treated group,
-#' \code{coef20} is the coefficients for the intercurrent in the control group.
+#' \code{coef20} is the coefficients for the intercurrent in the control group. If the nonparametric method is used,
+#' the return is \code{NULL}.
 #'
 #' @examples
 #' ## load data
