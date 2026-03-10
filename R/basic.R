@@ -17,21 +17,18 @@
   return(newy)
 }
 
-.ipscore <- function(A, X=NULL, standardize=TRUE, weights=rep(1,length(A)), subset=rep(TRUE,length(A))){
-  As = A[subset]
+.ipscore <- function(A, X=NULL, standardize=TRUE, weights=rep(1,length(A))){
   if (is.null(X)) {
-    ps = mean(As)
+    ps = mean(A)
   } else {
-    fps = glm.fit(cbind(1,X)[subset,], As, family='binomial'(link='logit'), weights=weights[subset])
+    fps = glm.fit(cbind(1,X), A, family='binomial'(link='logit'), weights=weights)
     ps = fitted(fps)
   }
-  ips = rep(1, length(A))
   if (standardize){
-    ips0 = As/ps*mean(As/ps) + (1-As)/(1-ps)*mean((1-As)/(1-ps))
+    ips = A/ps*mean(A/ps) + (1-A)/(1-ps)*mean((1-A)/(1-ps))
   } else {
-    ips0 = As/ps + (1-As)/(1-ps)
+    ips = A/ps + (1-A)/(1-ps)
   }
-  ips[subset] = ips0
   return(ips)
 }
 
