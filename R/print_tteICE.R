@@ -59,7 +59,7 @@ print.tteICE <- function(x, digits=3, ...){
   cat("Strategy:", strat[x$strategy], "\n")
   cat("Estimation method:", meth[x$method], "\n")
   cat("Observations:", x$n, '(including', x$n1, 'treated and', x$n0, 'control)\n')
-  cat("Maximum follow-up time:", max(x$time), '\n')
+  cat("Maximum follow-up time:", round(max(x$time), digits), '\n')
   cat("P-value of the average treatment effect:", round(p, digits), "\n")
   invisible(x)
 }
