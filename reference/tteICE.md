@@ -188,17 +188,6 @@ print(fit1)
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.5907 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5323  0.5864  0.5864  0.6299
-#> se1    0.0501  0.0499  0.0499  0.0617
-#> CIF0   0.6087  0.6377  0.6377  0.6377
-#> se0    0.0803  0.0793  0.0793  0.0793
-#> ATE   -0.0764 -0.0513 -0.0513 -0.0078
-#> se     0.0946  0.0937  0.0937  0.1005
-#> p.val  0.4192  0.5843  0.5843  0.9384
-#> 
 
 ## model fitting for competing risk data without covariates
 ## with bootstrap confidence intervals
@@ -215,17 +204,6 @@ print(fit.bt1)
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.5907 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5323  0.5864  0.5864  0.6299
-#> se1    0.0511  0.0574  0.0574  0.0586
-#> CIF0   0.6087  0.6377  0.6377  0.6377
-#> se0    0.0673  0.0716  0.0716  0.0716
-#> ATE   -0.0764 -0.0513 -0.0513 -0.0078
-#> se     0.0857  0.0916  0.0916  0.0912
-#> p.val  0.3723  0.5759  0.5759  0.9321
-#> 
 
 ## model fitting for competing risk data with covariates
 fit2 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
@@ -241,17 +219,6 @@ print(fit2)
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.1366 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5246  0.5836  0.5836  0.6347
-#> se1    0.0514  0.0511  0.0511  0.0587
-#> CIF0   0.6784  0.7010  0.7010  0.7010
-#> se0    0.0662  0.0651  0.0651  0.0651
-#> ATE   -0.1538 -0.1174 -0.1174 -0.0663
-#> se     0.0838  0.0828  0.0828  0.0877
-#> p.val  0.0667  0.1560  0.1560  0.4494
-#> 
 
 ## model fitting for semicompeting risk data without covariates
 fitscr1 = tteICE(Surv(t1, d1)~A, ~Surv(t2, d2),
@@ -267,17 +234,6 @@ print(fitscr1)
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.5907 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5323  0.5864  0.5864  0.6299
-#> se1    0.0501  0.0499  0.0499  0.0617
-#> CIF0   0.6087  0.6377  0.6377  0.6377
-#> se0    0.0803  0.0793  0.0793  0.0793
-#> ATE   -0.0764 -0.0513 -0.0513 -0.0078
-#> se     0.0946  0.0937  0.0937  0.1005
-#> p.val  0.4192  0.5843  0.5843  0.9384
-#> 
 
 ## model fitting for semicompeting risk data without covariates
 fitscr2 = tteICE(Surv(t1, d1)~A|z1+z3+z5, ~Surv(t2, d2),
@@ -293,16 +249,5 @@ print(fitscr2)
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.1366 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.5246  0.5836  0.5836  0.6347
-#> se1    0.0514  0.0511  0.0511  0.0587
-#> CIF0   0.6784  0.7010  0.7010  0.7010
-#> se0    0.0662  0.0651  0.0651  0.0651
-#> ATE   -0.1538 -0.1174 -0.1174 -0.0663
-#> se     0.0838  0.0828  0.0828  0.0877
-#> p.val  0.0667  0.1560  0.1560  0.4494
-#> 
 
 ```
