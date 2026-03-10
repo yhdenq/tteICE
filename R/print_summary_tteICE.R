@@ -21,7 +21,7 @@ print.summary.tteICE <- function(x, digits=3, ...) {
   cat("Strategy:", x$strategy, "\n")
   cat("Estimation method:", x$method, "\n")
   cat("Observations:", x$n, '(including', x$n1, 'treated and', x$n0, 'control)\n')
-  cat("Maximum follow-up time:", x$maxt, '\n')
+  cat("Maximum follow-up time:", round(x$maxt, digits), '\n')
   cat("P-value of the average treatment effect:", round(p, digits), "\n")
   cat("-----------------------------------------------------------------------\n")
   cat("The estimated cumulative incidences and treatment effects at quartiles:\n")
