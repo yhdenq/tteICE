@@ -55,7 +55,7 @@ print(fit1)
 #> Estimation method: nonparametric estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.5907 
+#> P-value of the average treatment effect: 0.591 
 
 fit2 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
 print(fit2, digits=2)

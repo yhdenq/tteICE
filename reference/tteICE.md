@@ -187,7 +187,7 @@ print(fit1)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.5907 
+#> P-value of the average treatment effect: 0.591 
 
 ## model fitting for competing risk data without covariates
 ## with bootstrap confidence intervals
@@ -203,7 +203,7 @@ print(fit.bt1)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.5907 
+#> P-value of the average treatment effect: 0.591 
 
 ## model fitting for competing risk data with covariates
 fit2 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
@@ -218,7 +218,7 @@ print(fit2)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.1366 
+#> P-value of the average treatment effect: 0.137 
 
 ## model fitting for semicompeting risk data without covariates
 fitscr1 = tteICE(Surv(t1, d1)~A, ~Surv(t2, d2),
@@ -233,7 +233,7 @@ print(fitscr1)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.5907 
+#> P-value of the average treatment effect: 0.591 
 
 ## model fitting for semicompeting risk data without covariates
 fitscr2 = tteICE(Surv(t1, d1)~A|z1+z3+z5, ~Surv(t2, d2),
@@ -248,6 +248,6 @@ print(fitscr2)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.1366 
+#> P-value of the average treatment effect: 0.137 
 
 ```
