@@ -20,9 +20,9 @@
 .ipscore <- function(A, X=NULL, standardize=TRUE, weights=rep(1,length(A)), subset=rep(TRUE,length(A))){
   As = A[subset]
   if (is.null(X)) {
-    ps = mean(A)
+    ps = mean(As)
   } else {
-    fps = glm.fit(cbind(1,X)[subset,], As, family='binomial'(link='logit'), weights=weights)
+    fps = glm.fit(cbind(1,X)[subset,], As, family='binomial'(link='logit'), weights=weights[subset])
     ps = fitted(fps)
   }
   ips = rep(1, length(A))
