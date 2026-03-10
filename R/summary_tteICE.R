@@ -42,9 +42,13 @@
 #' @export
 
 summary.tteICE <- function(object, ...) {
-
   res = list(call=object$call,dtype=object$dtype, strategy=object$strategy, method=object$method, maxt=max(object$time),
              n=object$n, n1=object$n1, n0=object$n0, p.val=object$p.val, est=predict(object))
   class(res) <- "summary.tteICE"
-  res
+  print(object)
+  cat("-----------------------------------------------------------------------\n")
+  cat("The estimated cumulative incidences and treatment effects at quartiles:\n")
+  print(round(x$est, digits))
+  cat("\n")
+  invisible(res)
 }
