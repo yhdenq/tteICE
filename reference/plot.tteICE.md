@@ -85,9 +85,9 @@ Plot the results from a tteICE object
 
 [`plot_ate`](https://mephas.github.io/tteICE/reference/plot_ate.md),
 [`plot_inc`](https://mephas.github.io/tteICE/reference/plot_inc.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html),
-[`tteICE`](https://mephas.github.io/tteICE/reference/tteICE-package.html)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md),
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md),
+[`tteICE`](https://mephas.github.io/tteICE/reference/tteICE.md)
 
 ## Examples
 
@@ -99,7 +99,6 @@ A = as.numeric(bmt$group>1)
 bmt$A = A
 
 ## simple model fitting and plotting
-library(survival)
 fit1 = tteICE(Surv(t2,d4,type = "mstate")~A, data=bmt)
 plot(fit1, type="ate")
 
@@ -117,6 +116,5 @@ plot(fit2, type="inc", decrease=TRUE, ylim=c(0,1),
 fit3 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
 plot(fit3, type="ate", ylim=c(-1,1), xlab="time",
      plot.configs=list(col="red"))
-
 
 ```

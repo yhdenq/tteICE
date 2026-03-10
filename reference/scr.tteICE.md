@@ -146,7 +146,7 @@ Time-to-Event Outcomes Under ICH E9 (R1). *Statistics in Medicine*.
 ## See also
 
 [`surv.boot`](https://mephas.github.io/tteICE/reference/surv.boot.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
 
 ## Examples
 
@@ -160,13 +160,6 @@ X = as.matrix(bmt[,c('z1','z3','z5')])
 ## Composite variable strategy,
 ## nonparametric estimation without covariates
 fit1 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-# \donttest{
-fit10 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "aa") ## warning message
-#> Warning: Please choose a strategy from the following:
-#>  treatment, composite, natural, removed, whileon, principal
-#> 
-#>             composite variable strategy is used by default
-# }
 
 ## Hypothetical strategy (natural effects),
 ## nonparametric estimation with inverse probability weighting

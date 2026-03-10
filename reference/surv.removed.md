@@ -77,9 +77,13 @@ A list including
 
   P value of testing the treatment effect based on logrank test.
 
+- cumhaz:
+
+  Baseline cumulative hazards in the survival models.
+
 ## Details
 
 ## See also
 
 [`surv.removed.eff`](https://mephas.github.io/tteICE/reference/surv.removed.eff.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)

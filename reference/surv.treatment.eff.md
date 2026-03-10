@@ -80,9 +80,23 @@ A list including
   influence function of the restricted mean survival time lost by the
   end of study.
 
+- coef:
+
+  Coefficients of covariates in the working Cox models for the primary
+  event.
+
+- ph:
+
+  P values of the proportional hazards assumption in the working Cox
+  models for the primary event.
+
+- cumhaz:
+
+  Baseline cumulative hazards in the working Cox models .
+
 ## Details
 
 ## See also
 
 [`surv.treatment`](https://mephas.github.io/tteICE/reference/surv.treatment.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)

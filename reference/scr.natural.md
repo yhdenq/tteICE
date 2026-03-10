@@ -85,9 +85,13 @@ A list including
 
   P value of testing the treatment effect based on logrank test.
 
+- cumhaz:
+
+  Baseline cumulative hazards in the survival models.
+
 ## Details
 
 ## See also
 
 [`scr.natural.eff`](https://mephas.github.io/tteICE/reference/scr.natural.eff.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)

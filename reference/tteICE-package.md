@@ -19,17 +19,22 @@ covariates) and semiparametrically efficient estimation are presented.
 
 Main functions:
 
-- [`tteICE`](https://mephas.github.io/tteICE/reference/tteICE-package.html)
-  Using formula to fit cumulative incidence functions (CIFs) for
+- [`tteICE`](https://mephas.github.io/tteICE/reference/tteICE.md) Using
+  formula to fit cumulative incidence functions (CIFs) for
   competing/semicompeting risk time-to-event data with intercurrent
   events.
 
-- [`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)
+- [`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
   Fit CIFs for semicompeting risk time-to-event data with intercurrent
   events.
 
-- [`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)
+- [`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)
   Fit CIFs for competing risk time-to-event with intercurrent events.
+
+- [`tteICEShiny`](https://mephas.github.io/tteICE/reference/tteICEShiny.md)
+  Interactive Shiny app for the 'tteICE' package
+
+Results output functions:
 
 - [`plot.tteICE`](https://mephas.github.io/tteICE/reference/plot.tteICE.md)
   Plot results from 'tteICE' objects.
@@ -41,10 +46,17 @@ Main functions:
   Summarize results from 'tteICE' objects
 
 - [`predict.tteICE`](https://mephas.github.io/tteICE/reference/predict.tteICE.md)
+  Show the coefficient for 'tteICE' objects
+
+- [`coef.tteICE`](https://mephas.github.io/tteICE/reference/coef.tteICE.md)
   Predict risks for 'tteICE' objects at specific time points
 
-- [`tteICEShiny`](https://mephas.github.io/tteICE/reference/tteICE-package.html)
-  Interactive Shiny app for the 'tteICE' package
+- [`bshaz`](https://mephas.github.io/tteICE/reference/bshaz.md) Extract
+  the baseline hazards for 'tteICE' objects
+
+- [`zph`](https://mephas.github.io/tteICE/reference/zph.md) Perform a
+  test for the proportional hazards assumption for the Cox models in
+  'tteICE' objects
 
 Example data:
 

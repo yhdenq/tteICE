@@ -4,11 +4,15 @@
 <url><loc>https://mephas.github.io/tteICE/index.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/news/index.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/bmt.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/bshaz.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/bshaz.tteICE.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/coef.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/index.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/plot.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/plot_ate.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/plot_inc.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/predict.tteICE.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/print.summary.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/print.tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/scr.composite.eff.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/scr.composite.html</loc></url>
@@ -42,5 +46,7 @@
 <url><loc>https://mephas.github.io/tteICE/reference/tteICE-package.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/tteICE.html</loc></url>
 <url><loc>https://mephas.github.io/tteICE/reference/tteICEShiny.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/zph.html</loc></url>
+<url><loc>https://mephas.github.io/tteICE/reference/zph.tteICE.html</loc></url>
 </urlset>
 

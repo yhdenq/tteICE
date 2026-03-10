@@ -156,7 +156,7 @@ Time-to-Event Outcomes Under ICH E9 (R1). *Statistics in Medicine*.
 ## See also
 
 [`surv.boot`](https://mephas.github.io/tteICE/reference/surv.boot.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
 
 ## Examples
 
@@ -200,7 +200,7 @@ print(fit1)
 #> p.val  0.4192  0.5843  0.5843  0.9384
 #> 
 
-## model fitting for competing risk data without covariates 
+## model fitting for competing risk data without covariates
 ## with bootstrap confidence intervals
 fit.bt1 = tteICE(Surv(t2, d4, type = "mstate")~A,
  data=bmt, strategy="composite", method='eff', nboot=20, seed=2)

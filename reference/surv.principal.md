@@ -79,9 +79,13 @@ A list including
   P value of testing the treatment effect, which is not available under
   this strategy.
 
+- cumhaz:
+
+  Baseline cumulative hazards in the survival models.
+
 ## Details
 
 ## See also
 
 [`surv.principal.eff`](https://mephas.github.io/tteICE/reference/surv.principal.eff.md),
-[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.html)
+[`surv.tteICE`](https://mephas.github.io/tteICE/reference/surv.tteICE.md)

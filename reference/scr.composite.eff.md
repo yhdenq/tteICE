@@ -88,9 +88,19 @@ A list including
   influence function of the restricted mean survival time lost by the
   end of study.
 
+- coef:
+
+  Coefficients of covariates in the working Cox models for the composite
+  event.
+
+- ph:
+
+  P values of the proportional hazards assumption in the working Cox
+  models for the composite event.
+
 ## Details
 
 ## See also
 
 [`scr.composite`](https://mephas.github.io/tteICE/reference/scr.composite.md),
-[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.html)
+[`scr.tteICE`](https://mephas.github.io/tteICE/reference/scr.tteICE.md)
