@@ -44,7 +44,7 @@
 #' bmt$A = A
 #'
 #' ## simple model fitting and plotting
-#' fit1 = tteICE(Surv(t2,d4,type = "mstate")~A, data=bmt)
+#' fit1 = tteICE(Surv(t2, factor(d4))~A, data=bmt)
 #' plot(fit1, type="ate")
 #' plot(fit1, type="inc")
 #'
