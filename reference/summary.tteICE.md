@@ -60,8 +60,9 @@ summary(fit1)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.591 
 #> -----------------------------------------------------------------------
+#> -----------------------------------------------------------------------
 #> The estimated cumulative incidences and treatment effects at quartiles:
-#> Error in summary.tteICE(fit1): object 'x' not found
+#> Error in summary.tteICE(fit1): object 'digits' not found
 
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
 predict(fit2)
@@ -89,6 +90,9 @@ summary(fit3)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.137 
 #> -----------------------------------------------------------------------
+#> Coefficients of covariates in the Cox model
+#> 0.004102366 0.06287401 -0.2256202 -0.1124675 0.2259854 -0.1954273 
+#> -----------------------------------------------------------------------
 #> The estimated cumulative incidences and treatment effects at quartiles:
-#> Error in summary.tteICE(fit3): object 'x' not found
+#> Error in summary.tteICE(fit3): object 'digits' not found
 ```
