@@ -43,12 +43,33 @@
 
 summary.tteICE <- function(object, ...) {
   res = list(call=object$call,dtype=object$dtype, strategy=object$strategy, method=object$method, maxt=max(object$time),
-             n=object$n, n1=object$n1, n0=object$n0, p.val=object$p.val, est=predict(object))
+             n=object$n, n1=object$n1, n0=object$n0, p.val=object$p.val, coef=coef(object), est=predict(object))
   class(res) <- "summary.tteICE"
   print(object)
   cat("-----------------------------------------------------------------------\n")
+  if (!is.null(object$coef)) {
+    coef1 = rbind(object$coef$coef11, object$coef$coef10)
+    if (!is.null(coef1)){
+      rownames(coef1) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model for event 1\n")
+      cat(coef1,"\n")
+    }
+    coef2 = rbind(object$coef$coef21, object$coef$coef20)
+    if (!is.null(coef2)){
+      rownames(coef2) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model for event 2\n")
+      cat(coef2,"\n")
+    }
+    coef = rbind(object$coef$coef1, object$coef$coef0)
+    if (!is.null(coef)){
+      rownames(coef) = c("A=1", "A=0")
+      cat("Coefficients of covariates in the Cox model\n")
+      cat(coef,"\n")
+    }
+  }
+  cat("-----------------------------------------------------------------------\n")
   cat("The estimated cumulative incidences and treatment effects at quartiles:\n")
-  print(round(x$est, digits))
+  print(round(object$est, digits))
   cat("\n")
   invisible(res)
 }
