@@ -46,8 +46,8 @@ summary.tteICE <- function(object, ...) {
              n=object$n, n1=object$n1, n0=object$n0, p.val=object$p.val, coef=coef(object), est=predict(object))
   class(res) <- "summary.tteICE"
   print(object)
-  cat("-----------------------------------------------------------------------\n")
   if (!is.null(object$coef)) {
+    cat("-----------------------------------------------------------------------\n")
     coef1 = rbind(object$coef$coef11, object$coef$coef10)
     if (!is.null(coef1)){
       rownames(coef1) = c("A=1", "A=0")
