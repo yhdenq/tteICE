@@ -60,7 +60,6 @@ summary(fit1)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.591 
 #> -----------------------------------------------------------------------
-#> -----------------------------------------------------------------------
 #> The estimated cumulative incidences and treatment effects at quartiles:
 #> Error in summary.tteICE(fit1): object 'digits' not found
 
