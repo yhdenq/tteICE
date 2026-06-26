@@ -89,23 +89,10 @@ library(survival)
 fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
               data=bmt, strategy="composite", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
+#> Error in `[.cox.zph`(cox.zph(fit1, terms = FALSE), , 3): argument "..1" is missing, with no default
 predict(fit3, timeset=c(670,2000))
-#>               670        2000
-#> CIF1   0.52459066  0.58362684
-#> se1    0.05140949  0.05108944
-#> CIF0   0.70103992  0.70103992
-#> se0    0.06510731  0.06510731
-#> ATE   -0.17644926 -0.11741308
-#> se     0.08295721  0.08275925
-#> p.val  0.03342080  0.15597758
+#> Error: object 'fit3' not found
 predict(fit3)
-#>               660        1320        1980        2640
-#> CIF1   0.52459066  0.58362684  0.58362684  0.63470334
-#> se1    0.05140949  0.05108944  0.05108944  0.05874485
-#> CIF0   0.67836383  0.70103992  0.70103992  0.70103992
-#> se0    0.06623568  0.06510731  0.06510731  0.06510731
-#> ATE   -0.15377316 -0.11741308 -0.11741308 -0.06633659
-#> se     0.08384570  0.08275925  0.08275925  0.08769219
-#> p.val  0.06665373  0.15597758  0.15597758  0.44936692
+#> Error: object 'fit3' not found
 
 ```

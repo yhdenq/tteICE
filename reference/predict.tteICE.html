@@ -119,24 +119,11 @@ treated and under control), treatment effects, standard errors, and P-values.</p
 <span class="r-in"><span><span class="va">fit3</span> <span class="op">=</span> <span class="fu"><a href="tteICE.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>,</span></span>
 <span class="r-in"><span>              data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"composite"</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>type= 'mstate' is deprecated, use a factor variable as status</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in `[.cox.zph`(cox.zph(fit1, terms = FALSE), , 3):</span> argument "..1" is missing, with no default</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit3</span>, timeset<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">670</span>,<span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               670        2000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.52459066  0.58362684</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se1    0.05140949  0.05108944</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.70103992  0.70103992</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se0    0.06510731  0.06510731</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.17644926 -0.11741308</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.08295721  0.08275925</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.03342080  0.15597758</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit3' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               660        1320        1980        2640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.52459066  0.58362684  0.58362684  0.63470334</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se1    0.05140949  0.05108944  0.05108944  0.05874485</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.67836383  0.70103992  0.70103992  0.70103992</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se0    0.06623568  0.06510731  0.06510731  0.06510731</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.15377316 -0.11741308 -0.11741308 -0.06633659</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.08384570  0.08275925  0.08275925  0.08769219</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.06665373  0.15597758  0.15597758  0.44936692</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit3' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
