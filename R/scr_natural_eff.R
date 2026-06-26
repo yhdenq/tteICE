@@ -267,7 +267,7 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   ph21 = c(NA, cox.zph(fit21, terms=FALSE)[[1]][,3])
   ph20 = c(NA, cox.zph(fit20, terms=FALSE)[[1]][,3])
   ph = data.frame(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
-  rownames(ph)[1] = 'ICE'
+  rownames(coef) = rownames(ph)[1:(ncol(X)+1)] = c('ICE',colnames(X))
   colnames(ph) = c('Primary, A=1', 'Primary, A=0', 'ICE, A=1', 'ICE, A=0')
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
