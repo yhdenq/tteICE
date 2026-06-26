@@ -79,73 +79,16 @@ event in the control group, <code>ph21</code> is the P-values for the intercurre
 <span class="r-in"><span><span class="va">fit</span> <span class="op">=</span> <span class="fu"><a href="tteICE.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>,</span></span>
 <span class="r-in"><span> data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"whileon"</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>type= 'mstate' is deprecated, use a factor variable as status</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in as.data.frame.default(x[[i]], optional = TRUE, stringsAsFactors = stringsAsFactors):</span> cannot coerce class ‘"cox.zph"’ to a data.frame</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">ph</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        chisq df    p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1    0.166  1 0.68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3    0.767  1 0.38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5    0.310  1 0.58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL 1.131  3 0.77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        chisq df     p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1     5.38  1 0.020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3     0.11  1 0.740</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5     3.19  1 0.074</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL  6.77  3 0.079</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         chisq df    p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1    0.0178  1 0.89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3    0.0956  1 0.76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5    0.0905  1 0.76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL 0.2487  3 0.97</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         chisq df    p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1    0.9115  1 0.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3    0.0551  1 0.81</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5    2.5960  1 0.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL 5.5810  3 0.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit' not found</span>
 <span class="r-in"><span><span class="fu"><a href="zph.html">zph</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        chisq df    p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1    0.166  1 0.68</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3    0.767  1 0.38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5    0.310  1 0.58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL 1.131  3 0.77</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        chisq df     p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1     5.38  1 0.020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3     0.11  1 0.740</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5     3.19  1 0.074</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL  6.77  3 0.079</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         chisq df    p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1    0.0178  1 0.89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3    0.0956  1 0.76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5    0.0905  1 0.76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL 0.2487  3 0.97</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ph20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         chisq df    p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz1    0.9115  1 0.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz3    0.0551  1 0.81</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Xz5    2.5960  1 0.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLOBAL 5.5810  3 0.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">ph</span><span class="op">$</span><span class="va">ph11</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="zph.tteICE-1.png" alt="" width="700" height="433"></span>
-<span class="r-plt img"><img src="zph.tteICE-2.png" alt="" width="700" height="433"></span>
-<span class="r-plt img"><img src="zph.tteICE-3.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit' not found</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">fit</span><span class="op">$</span><span class="va">ph</span><span class="op">$</span><span class="va">ph10</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="zph.tteICE-4.png" alt="" width="700" height="433"></span>
-<span class="r-plt img"><img src="zph.tteICE-5.png" alt="" width="700" height="433"></span>
-<span class="r-plt img"><img src="zph.tteICE-6.png" alt="" width="700" height="433"></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## No results when method is nonparametric</span></span></span>

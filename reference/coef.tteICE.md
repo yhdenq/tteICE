@@ -49,21 +49,7 @@ bmt$A = A
 fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
+#> Error in as.data.frame.default(x[[i]], optional = TRUE, stringsAsFactors = stringsAsFactors): cannot coerce class ‘"cox.zph"’ to a data.frame
 coef(fit)
-#> $coef11
-#>         Xz1         Xz3         Xz5 
-#>  0.01807550 -0.11852413  0.08175745 
-#> 
-#> $coef10
-#>         Xz1         Xz3         Xz5 
-#>  0.05860219  0.28192137 -1.33574510 
-#> 
-#> $coef21
-#>         Xz1         Xz3         Xz5 
-#> -0.01067268 -0.34003123  0.37432047 
-#> 
-#> $coef20
-#>         Xz1         Xz3         Xz5 
-#>  0.06910952 -0.49625608  0.72289467 
-#> 
+#> Error: object 'fit' not found
 ```

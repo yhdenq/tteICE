@@ -47,73 +47,16 @@ bmt$A = A
 fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
+#> Error in as.data.frame.default(x[[i]], optional = TRUE, stringsAsFactors = stringsAsFactors): cannot coerce class ‘"cox.zph"’ to a data.frame
 print(fit$ph)
-#> $ph11
-#>        chisq df    p
-#> Xz1    0.166  1 0.68
-#> Xz3    0.767  1 0.38
-#> Xz5    0.310  1 0.58
-#> GLOBAL 1.131  3 0.77
-#> 
-#> $ph10
-#>        chisq df     p
-#> Xz1     5.38  1 0.020
-#> Xz3     0.11  1 0.740
-#> Xz5     3.19  1 0.074
-#> GLOBAL  6.77  3 0.079
-#> 
-#> $ph21
-#>         chisq df    p
-#> Xz1    0.0178  1 0.89
-#> Xz3    0.0956  1 0.76
-#> Xz5    0.0905  1 0.76
-#> GLOBAL 0.2487  3 0.97
-#> 
-#> $ph20
-#>         chisq df    p
-#> Xz1    0.9115  1 0.34
-#> Xz3    0.0551  1 0.81
-#> Xz5    2.5960  1 0.11
-#> GLOBAL 5.5810  3 0.13
-#> 
+#> Error: object 'fit' not found
 zph(fit)
-#> $ph11
-#>        chisq df    p
-#> Xz1    0.166  1 0.68
-#> Xz3    0.767  1 0.38
-#> Xz5    0.310  1 0.58
-#> GLOBAL 1.131  3 0.77
-#> 
-#> $ph10
-#>        chisq df     p
-#> Xz1     5.38  1 0.020
-#> Xz3     0.11  1 0.740
-#> Xz5     3.19  1 0.074
-#> GLOBAL  6.77  3 0.079
-#> 
-#> $ph21
-#>         chisq df    p
-#> Xz1    0.0178  1 0.89
-#> Xz3    0.0956  1 0.76
-#> Xz5    0.0905  1 0.76
-#> GLOBAL 0.2487  3 0.97
-#> 
-#> $ph20
-#>         chisq df    p
-#> Xz1    0.9115  1 0.34
-#> Xz3    0.0551  1 0.81
-#> Xz5    2.5960  1 0.11
-#> GLOBAL 5.5810  3 0.13
-#> 
+#> Error: object 'fit' not found
 
 plot(fit$ph$ph11)
-
-
-
+#> Error: object 'fit' not found
 plot(fit$ph$ph10)
-
-
-
+#> Error: object 'fit' not found
 
 
 ## No results when method is nonparametric
