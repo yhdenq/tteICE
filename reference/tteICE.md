@@ -211,9 +211,17 @@ print(fit.bt1)
 fit2 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="composite", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
-#> Error in `[.cox.zph`(cox.zph(fit1, terms = FALSE), , 3): argument "..1" is missing, with no default
 print(fit2)
-#> Error: object 'fit2' not found
+#> Input:
+#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 
+#>     z5, data = bmt, strategy = "composite", method = "eff")
+#> -----------------------------------------------------------------------
+#> Data type: competing risks 
+#> Strategy: composite variable strategy 
+#> Estimation method: semiparametrically efficient estimation 
+#> Observations: 137 (including 99 treated and 38 control)
+#> Maximum follow-up time: 2640 
+#> P-value of the average treatment effect: 0.137 
 
 ## model fitting for semicompeting risk data without covariates
 fitscr1 = tteICE(Surv(t1, d1)~A, ~Surv(t2, d2),
@@ -233,8 +241,16 @@ print(fitscr1)
 ## model fitting for semicompeting risk data without covariates
 fitscr2 = tteICE(Surv(t1, d1)~A|z1+z3+z5, ~Surv(t2, d2),
  data=bmt, strategy="composite", method='eff')
-#> Error in `[.cox.zph`(cox.zph(fit1, terms = FALSE), , 3): argument "..1" is missing, with no default
 print(fitscr2)
-#> Error: object 'fitscr2' not found
+#> Input:
+#> tteICE(formula = Surv(t1, d1) ~ A | z1 + z3 + z5, add.scr = ~Surv(t2, 
+#>     d2), data = bmt, strategy = "composite", method = "eff")
+#> -----------------------------------------------------------------------
+#> Data type: semicompeting risks 
+#> Strategy: composite variable strategy 
+#> Estimation method: semiparametrically efficient estimation 
+#> Observations: 137 (including 99 treated and 38 control)
+#> Maximum follow-up time: 2640 
+#> P-value of the average treatment effect: 0.137 
 
 ```

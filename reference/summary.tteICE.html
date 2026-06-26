@@ -110,9 +110,21 @@ sample size, treated sample size, controlled sample size, p-value, and predicted
 <span class="r-in"><span><span class="va">fit3</span> <span class="op">=</span> <span class="fu"><a href="tteICE.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>, </span></span>
 <span class="r-in"><span>              data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"composite"</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>type= 'mstate' is deprecated, use a factor variable as status</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in `[.cox.zph`(cox.zph(fit1, terms = FALSE), , 3):</span> argument "..1" is missing, with no default</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'fit3' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Input:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     z5, data = bmt, strategy = "composite", method = "eff")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Data type: competing risks </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Strategy: composite variable strategy </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estimation method: semiparametrically efficient estimation </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Observations: 137 (including 99 treated and 38 control)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Maximum follow-up time: 2640 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> P-value of the average treatment effect: 0.137 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> The estimated cumulative incidences and treatment effects at quartiles:</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary.tteICE(fit3):</span> object 'digits' not found</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

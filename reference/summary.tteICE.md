@@ -78,7 +78,19 @@ library(survival)
 fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, 
               data=bmt, strategy="composite", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
-#> Error in `[.cox.zph`(cox.zph(fit1, terms = FALSE), , 3): argument "..1" is missing, with no default
 summary(fit3)
-#> Error: object 'fit3' not found
+#> Input:
+#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 
+#>     z5, data = bmt, strategy = "composite", method = "eff")
+#> -----------------------------------------------------------------------
+#> Data type: competing risks 
+#> Strategy: composite variable strategy 
+#> Estimation method: semiparametrically efficient estimation 
+#> Observations: 137 (including 99 treated and 38 control)
+#> Maximum follow-up time: 2640 
+#> P-value of the average treatment effect: 0.137 
+#> -----------------------------------------------------------------------
+#> -----------------------------------------------------------------------
+#> The estimated cumulative incidences and treatment effects at quartiles:
+#> Error in summary.tteICE(fit3): object 'digits' not found
 ```
