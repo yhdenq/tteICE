@@ -149,6 +149,7 @@ surv.natural.eff <- function(A,Time,cstatus,X=NULL){
   coef = data.frame(coef11=coef11,se11=se11,coef10=coef10,se10=se10,
                     coef21=coef21,se21=se21,coef20=coef20,se20=se20)
   colnames(coef) = c('Primary, A=1', 'SE', 'Primary, A=0', 'SE', 'ICE, A=1', 'SE', 'ICE, A=0', 'SE')
+  rownames(coef) = rownames(ph)[1:ncol(X)] = colnames(X)
   ph11 = cox.zph(fit11, terms=FALSE)[[1]][,3]
   ph10 = cox.zph(fit10, terms=FALSE)[[1]][,3]
   ph21 = cox.zph(fit21, terms=FALSE)[[1]][,3]
