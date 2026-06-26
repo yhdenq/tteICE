@@ -47,16 +47,32 @@ bmt$A = A
 fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
-#> Error in `[.cox.zph`(cox.zph(fit11, terms = FALSE), , 3): argument "..1" is missing, with no default
 print(fit$ph)
-#> Error: object 'fit' not found
+#>        Primary, A=1 Primary, A=0  ICE, A=1  ICE, A=0
+#> Xz1       0.6834275   0.02040233 0.8938943 0.3397057
+#> Xz3       0.3812106   0.74035109 0.7571823 0.8144046
+#> Xz5       0.5778595   0.07386660 0.7635378 0.1071366
+#> GLOBAL    0.7696407   0.07948831 0.9693761 0.1338763
 zph(fit)
-#> Error: object 'fit' not found
+#>        Primary, A=1 Primary, A=0  ICE, A=1  ICE, A=0
+#> Xz1       0.6834275   0.02040233 0.8938943 0.3397057
+#> Xz3       0.3812106   0.74035109 0.7571823 0.8144046
+#> Xz5       0.5778595   0.07386660 0.7635378 0.1071366
+#> GLOBAL    0.7696407   0.07948831 0.9693761 0.1338763
 
 plot(fit$ph$ph11)
-#> Error: object 'fit' not found
+#> Warning: no non-missing arguments to min; returning Inf
+#> Warning: no non-missing arguments to max; returning -Inf
+#> Warning: no non-missing arguments to min; returning Inf
+#> Warning: no non-missing arguments to max; returning -Inf
+
+#> Error in plot.window(...): need finite 'xlim' values
 plot(fit$ph$ph10)
-#> Error: object 'fit' not found
+#> Warning: no non-missing arguments to min; returning Inf
+#> Warning: no non-missing arguments to max; returning -Inf
+#> Warning: no non-missing arguments to min; returning Inf
+#> Warning: no non-missing arguments to max; returning -Inf
+#> Error in plot.window(...): need finite 'xlim' values
 
 
 ## No results when method is nonparametric

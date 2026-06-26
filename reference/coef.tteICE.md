@@ -49,7 +49,13 @@ bmt$A = A
 fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
-#> Error in `[.cox.zph`(cox.zph(fit11, terms = FALSE), , 3): argument "..1" is missing, with no default
 coef(fit)
-#> Error: object 'fit' not found
+#>     Primary, A=1         SE Primary, A=0         SE    ICE, A=1         SE
+#> Xz1   0.01807550 0.01966552   0.05860219 0.04900616 -0.01067268 0.02039951
+#> Xz3  -0.11852413 0.37564863   0.28192137 0.73926362 -0.34003123 0.36772740
+#> Xz5   0.08175745 0.38396510  -1.33574510 0.81648428  0.37432047 0.38170065
+#>        ICE, A=0         SE
+#> Xz1  0.06910952 0.04865528
+#> Xz3 -0.49625608 0.66123273
+#> Xz5  0.72289467 0.63150591
 ```
