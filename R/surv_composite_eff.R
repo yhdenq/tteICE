@@ -65,10 +65,10 @@ surv.composite.eff <- function(A,Time,cstatus,X=NULL){
   tt0 = c(0,basehaz(fit0)$time)
   tt = sort(unique(c(tt1,tt0)))
   K = length(tt)
-  Xb1 = X%*%fit1$coefficients
-  Xb0 = X%*%fit0$coefficients
-  Xb1c = X%*%fit1c$coefficients
-  Xb0c = X%*%fit0c$coefficients
+  Xb1 = X%*%replace(fit1$coefficients,is.na(fit1$coefficients),0)
+  Xb0 = X%*%replace(fit0$coefficients,is.na(fit0$coefficients),0)
+  Xb1c = X%*%replace(fit1c$coefficients,is.na(fit1c$coefficients),0)
+  Xb0c = X%*%replace(fit0c$coefficients,is.na(fit0c$coefficients),0)
   cumhaz1 = .matchy(c(0,basehaz(fit1,centered=FALSE)$hazard),tt1,tt)
   cumhaz0 = .matchy(c(0,basehaz(fit0,centered=FALSE)$hazard),tt0,tt)
   cumhaz = data.frame(time=tt,cumhaz1=cumhaz1,cumhaz0=cumhaz0)
