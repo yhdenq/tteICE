@@ -107,11 +107,11 @@ surv.composite.eff <- function(A,Time,cstatus,X=NULL){
   se1 = sqrt(diag(vcov(fit1))) / scaled
   se0 = sqrt(diag(vcov(fit0))) / scaled
   coef = data.frame(coef11=coef1,se11=se1,coef10=coef0,se10=se0)
-  colnames(coef) = c('Primary, A=1', 'SE', 'Primary, A=0', 'SE')
-  ph1 = cox.zph(fit1, terms=FALSE)[,3]
-  ph0 = cox.zph(fit0, terms=FALSE)[,3]
+  colnames(coef) = c('Composite, A=1', 'SE', 'Composite, A=0', 'SE')
+  ph1 = cox.zph(fit1, terms=FALSE)[[1]][,3]
+  ph0 = cox.zph(fit0, terms=FALSE)[[1]][,3]
   ph = data.frame(ph11=ph1,ph10=ph0)
-  colnames(ph) = c('Primary, A=1', 'Primary, A=0')
+  colnames(ph) = c('Composite, A=1', 'Composite, A=0')
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
               coef=coef,ph=ph,cumhaz=cumhaz))
