@@ -77,6 +77,7 @@ predict(fit2)
 library(survival)
 fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, 
               data=bmt, strategy="composite", method='eff')
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 summary(fit3)
 #> Input:
 #> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 

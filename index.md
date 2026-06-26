@@ -125,6 +125,7 @@ You can install the development version of “tteICE” from GitHub with:
 **(We are updaing the package)**
 
 ``` r
+
 # install.packages("pak")
 pak::pak("mephas/tteICE")
 ```
@@ -132,6 +133,7 @@ pak::pak("mephas/tteICE")
 Alternatively, you can install “tteICE” from R CRAN with:
 
 ``` r
+
 install.packages("tteICE")
 ```
 
@@ -148,6 +150,7 @@ indicator is d4=d2+d3, so that d4=1 if death occurs first, while d4=2 if
 relapse occurs first.
 
 ``` r
+
 library(tteICE)
 data(bmt)
 A = as.numeric(bmt$group>1)
@@ -160,6 +163,7 @@ Suppose we would like to use the hypothetical strategy (natural
 effects). We fit the model by nonparametric estimation.
 
 ``` r
+
 fit1 = surv.tteICE(A, bmt$t2, bmt$d4, "natural")
 plot(fit1, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ```
@@ -168,12 +172,14 @@ plot(fit1, type="inc", plot.configs=list(legend=c('AML','ALL')))
 
 ``` r
 
+
 plot(fit1, type="ate")
 ```
 
 ![](reference/figures/README-example_1-2.png)
 
 ``` r
+
 ## We can also use bootstrap confidence intervals
 # plot_ate(fit1, nboot=200)
 ```
@@ -182,6 +188,7 @@ We can also use inverse probability weighting to account for
 confounding.
 
 ``` r
+
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "natural", X, method='ipw')
 plot(fit2, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ```
@@ -189,6 +196,7 @@ plot(fit2, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ![](reference/figures/README-example_2-1.png)
 
 ``` r
+
 
 plot(fit2, type="ate")
 ```
@@ -199,6 +207,7 @@ To increase efficiency, we use the efficient influence function
 (EIF)-based method.
 
 ``` r
+
 fit3 = surv.tteICE(A, bmt$t2, bmt$d4, "natural", X, method='eff')
 plot(fit3, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ```
@@ -206,6 +215,7 @@ plot(fit3, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ![](reference/figures/README-example_3-1.png)
 
 ``` r
+
 
 plot(fit3, type="ate")
 ```
@@ -219,6 +229,7 @@ Note that the time to death (or censoring) is t1 and the time to relapse
 and fit the model nonparametrically.
 
 ``` r
+
 fit4 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural")
 plot(fit4, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ```
@@ -227,12 +238,14 @@ plot(fit4, type="inc", plot.configs=list(legend=c('AML','ALL')))
 
 ``` r
 
+
 plot(fit4, type="ate")
 ```
 
 ![](reference/figures/README-example_4-2.png)
 
 ``` r
+
 ## We can also use bootstrap confidence intervals
 # plot_ate(fit4, nboot=200)
 ```
@@ -241,6 +254,7 @@ We can also use inverse probability weighting to account for
 confounding.
 
 ``` r
+
 fit5 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural", X, method='ipw')
 plot(fit5, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ```
@@ -248,6 +262,7 @@ plot(fit5, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ![](reference/figures/README-example_5-1.png)
 
 ``` r
+
 
 plot(fit5, type="ate")
 ```
@@ -258,6 +273,7 @@ To increase efficiency, we use the efficient influence function
 (EIF)-based method.
 
 ``` r
+
 fit6 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "natural", X, method='eff') 
 plot(fit6, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ```
@@ -265,6 +281,7 @@ plot(fit6, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ![](reference/figures/README-example_6-1.png)
 
 ``` r
+
 
 plot(fit6, type="ate")
 ```
@@ -276,6 +293,7 @@ plot(fit6, type="ate")
 ### Competing risks data structure
 
 ``` r
+
 library(survival) ## need this package
 fit7 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, data=bmt, strategy="natural", method='eff')
 plot(fit7, type="inc", plot.configs=list(legend=c('AML','ALL')))
@@ -284,6 +302,7 @@ plot(fit7, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ![](reference/figures/README-example_7-1.png)
 
 ``` r
+
 print(fit7)
 #> Input:
 #> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 
@@ -320,6 +339,7 @@ predict(fit7)
 
 ``` r
 
+
 fit8 = tteICE(Surv(t1, d1)~A|z1+z3+z5, add.scr=~Surv(t2,d2), data=bmt, strategy="natural", method='eff')
 plot(fit8, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ```
@@ -327,6 +347,7 @@ plot(fit8, type="inc", plot.configs=list(legend=c('AML','ALL')))
 ![](reference/figures/README-example_8-1.png)
 
 ``` r
+
 print(fit8)
 #> Input:
 #> tteICE(formula = Surv(t1, d1) ~ A | z1 + z3 + z5, add.scr = ~Surv(t2, 

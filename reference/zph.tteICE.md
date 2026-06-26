@@ -46,6 +46,7 @@ bmt$A = A
 
 fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 print(fit$ph)
 #> $ph11
 #>        chisq df    p
@@ -118,6 +119,7 @@ plot(fit$ph$ph10)
 ## No results when method is nonparametric
 fit.np = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='np')
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 print(fit.np$ph)
 #> NULL
 

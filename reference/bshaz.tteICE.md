@@ -35,6 +35,7 @@ bmt$A = A
 
 fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 bshaz(fit)
 #>     time    cumhaz11   cumhaz10    cumhaz21   cumhaz20
 #> 1      0 0.000000000 0.00000000 0.000000000 0.00000000

@@ -177,6 +177,7 @@ library(survival)
 ## model fitting for competing risk data without covariates
 fit1 = tteICE(Surv(t2, d4, type = "mstate")~A,
  data=bmt, strategy="composite", method='eff')
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 print(fit1)
 #> Input:
 #> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, 
@@ -193,6 +194,7 @@ print(fit1)
 ## with bootstrap confidence intervals
 fit.bt1 = tteICE(Surv(t2, d4, type = "mstate")~A,
  data=bmt, strategy="composite", method='eff', nboot=20, seed=2)
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 print(fit.bt1)
 #> Input:
 #> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, 
@@ -208,6 +210,7 @@ print(fit.bt1)
 ## model fitting for competing risk data with covariates
 fit2 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="composite", method='eff')
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 print(fit2)
 #> Input:
 #> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 

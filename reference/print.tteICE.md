@@ -73,6 +73,7 @@ print(fit2, digits=2)
 library(survival)
 fit3 = tteICE(Surv(t2, d4, type = "mstate")~A,
               data=bmt, strategy="composite", method='eff')
+#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 print(fit3, digits=3)
 #> Input:
 #> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, 
