@@ -47,7 +47,7 @@ bmt$A = A
 fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
 #> Warning: type= 'mstate' is deprecated, use a factor variable as status
-#> Error in as.data.frame.default(x[[i]], optional = TRUE, stringsAsFactors = stringsAsFactors): cannot coerce class ‘"cox.zph"’ to a data.frame
+#> Error in `[.cox.zph`(cox.zph(fit11, terms = FALSE), , 3): argument "..1" is missing, with no default
 print(fit$ph)
 #> Error: object 'fit' not found
 zph(fit)
