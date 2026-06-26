@@ -110,12 +110,17 @@ surv.treatment.eff <- function(A,Time,cstatus,X=NULL){
   IFt = colSums(t(eif1-eif0)*diff(c(0,tt))*Ti,na.rm=TRUE)
   Vt = sd(IFt,na.rm=TRUE)/sqrt(n)
   p = 2*pnorm(-abs(Tt/Vt))
-  coef1 = fit1$coefficients / attr(X,"scaled:scale")
-  coef0 = fit0$coefficients / attr(X,"scaled:scale")
-  coef = list(coef1=coef1,coef0=coef0)
-  ph1 = cox.zph(fit1, terms=FALSE)
-  ph0 = cox.zph(fit0, terms=FALSE)
-  ph = list(ph1=ph1,ph0=ph0)
+  scaled = attr(X,"scaled:scale")
+  coef1 = fit1$coefficients / scaled
+  coef0 = fit0$coefficients / scaled
+  se1 = sqrt(diag(vcov(fit1))) / scaled
+  se0 = sqrt(diag(vcov(fit0))) / scaled
+  coef = data.frame(coef11=coef1,se11=se1,coef10=coef0,se10=se0)
+  colnames(coef) = c('Primary, A=1', 'SE', 'Primary, A=0', 'SE')
+  ph1 = cox.zph(fit1, terms=FALSE)[,3]
+  ph0 = cox.zph(fit0, terms=FALSE)[,3]
+  ph = data.frame(ph11=ph1,ph10=ph0)
+  colnames(ph) = c('Primary, A=1', 'Primary, A=0')
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
               coef=coef,ph=ph,cumhaz=cumhaz))
