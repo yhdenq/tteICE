@@ -121,6 +121,7 @@ surv.treatment.eff <- function(A,Time,cstatus,X=NULL){
   ph0 = cox.zph(fit0, terms=FALSE)[[1]][,3]
   ph = data.frame(ph11=ph1,ph10=ph0)
   colnames(ph) = c('Primary, A=1', 'Primary, A=0')
+  rownames(coef) = rownames(ph)[1:ncol(X)] = colnames(X)
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
               coef=coef,ph=ph,cumhaz=cumhaz))
