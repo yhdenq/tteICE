@@ -114,16 +114,24 @@ surv.removed.eff <- function(A,Time,cstatus,X=NULL){
   IFt = colSums(t(eif1-eif0)*diff(c(0,tt))*Ti,na.rm=TRUE)
   Vt = sd(IFt,na.rm=TRUE)/sqrt(n)
   p = 2*pnorm(-abs(Tt/Vt))
-  coef11 = fit11$coefficients / attr(X,"scaled:scale")
-  coef10 = fit10$coefficients / attr(X,"scaled:scale")
-  coef21 = fit21$coefficients / attr(X,"scaled:scale")
-  coef20 = fit20$coefficients / attr(X,"scaled:scale")
-  coef = list(coef11=coef11,coef10=coef10,coef21=coef21,coef20=coef20)
-  ph11 = cox.zph(fit11, terms=FALSE)
-  ph10 = cox.zph(fit10, terms=FALSE)
-  ph21 = cox.zph(fit21, terms=FALSE)
-  ph20 = cox.zph(fit20, terms=FALSE)
-  ph = list(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
+  scaled = attr(X,"scaled:scale")
+  coef11 = fit11$coefficients / scaled
+  coef10 = fit10$coefficients / scaled
+  coef21 = fit21$coefficients / scaled
+  coef20 = fit20$coefficients / scaled
+  se11 = sqrt(diag(vcov(fit11))) / scaled
+  se10 = sqrt(diag(vcov(fit10))) / scaled
+  se21 = sqrt(diag(vcov(fit21))) / scaled
+  se20 = sqrt(diag(vcov(fit20))) / scaled
+  coef = data.frame(coef11=coef11,se11=se11,coef10=coef10,se10=se10,
+                    coef21=coef21,se21=se21,coef20=coef20,se20=se20)
+  colnames(coef) = c('Primary, A=1', 'SE', 'Primary, A=0', 'SE', 'ICE, A=1', 'SE', 'ICE, A=0', 'SE')
+  ph11 = cox.zph(fit11, terms=FALSE)[,3]
+  ph10 = cox.zph(fit10, terms=FALSE)[,3]
+  ph21 = cox.zph(fit21, terms=FALSE)[,3]
+  ph20 = cox.zph(fit20, terms=FALSE)[,3]
+  ph = data.frame(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
+  colnames(ph) = c('Primary, A=1', 'Primary, A=0', 'ICE, A=1', 'ICE, A=0')
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
               coef=coef,ph=ph,cumhaz=cumhaz))
