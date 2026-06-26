@@ -72,12 +72,12 @@ surv.removed.eff <- function(A,Time,cstatus,X=NULL){
   tt0 = c(0,basehaz(fit10)$time)
   tt = sort(unique(c(tt1,tt0)))
   K = length(tt)
-  Xb11 = X%*%fit11$coefficients
-  Xb10 = X%*%fit10$coefficients
-  Xb21 = X%*%fit21$coefficients
-  Xb20 = X%*%fit20$coefficients
-  Xb1c = X%*%fit1c$coefficients
-  Xb0c = X%*%fit0c$coefficients
+  Xb11 = X%*%replace(fit11$coefficients,is.na(fit11$coefficients),0)
+  Xb10 = X%*%replace(fit10$coefficients,is.na(fit10$coefficients),0)
+  Xb21 = X%*%replace(fit21$coefficients,is.na(fit21$coefficients),0)
+  Xb20 = X%*%replace(fit20$coefficients,is.na(fit20$coefficients),0)
+  Xb1c = X%*%replace(fit1c$coefficients,is.na(fit1c$coefficients),0)
+  Xb0c = X%*%replace(fit0c$coefficients,is.na(fit0c$coefficients),0)
   cumhaz11 = .matchy(c(0,basehaz(fit11,centered=FALSE)$hazard),tt1,tt)
   cumhaz10 = .matchy(c(0,basehaz(fit10,centered=FALSE)$hazard),tt0,tt)
   cumhaz21 = .matchy(c(0,basehaz(fit21,centered=FALSE)$hazard),c(0,basehaz(fit21)$time),tt)
