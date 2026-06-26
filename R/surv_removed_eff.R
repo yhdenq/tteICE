@@ -132,6 +132,7 @@ surv.removed.eff <- function(A,Time,cstatus,X=NULL){
   ph20 = cox.zph(fit20, terms=FALSE)[[1]][,3]
   ph = data.frame(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
   colnames(ph) = c('Primary, A=1', 'Primary, A=0', 'ICE, A=1', 'ICE, A=0')
+  rownames(coef) = rownames(ph)[1:ncol(X)] = colnames(X)
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
               coef=coef,ph=ph,cumhaz=cumhaz))
