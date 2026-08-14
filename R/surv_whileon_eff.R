@@ -64,7 +64,7 @@ surv.whileon.eff <- function(A,Time,cstatus,X=NULL){
     return(surv.whileon(A,Time,cstatus))
   }
   X = as.matrix(scale(X))
-  if (is.null(colnames(X)) {
+  if (is.null(colnames(X))) {
     if (ncol(X)==1) {
       colnames(X) = "X"
     } else {
