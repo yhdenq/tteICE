@@ -56,6 +56,13 @@ surv.composite.eff <- function(A,Time,cstatus,X=NULL){
     return(surv.composite(A,Time,cstatus))
   } 
   X = as.matrix(scale(X))
+  if (is.null(colnames(X)) {
+    if (ncol(X)==1) {
+      colnames(X) = "X"
+    } else {
+      colnames(X) = paste0("X", 1:ncol(X))
+    }
+  }
   ips = .ipscore(A,X)
   fit1 = coxph(Surv(Time,cstatus>0)~X, subset=(A==1))
   fit0 = coxph(Surv(Time,cstatus>0)~X, subset=(A==0))
