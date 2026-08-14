@@ -98,9 +98,9 @@ bmt = transform(bmt, d4=d2+d3)
 A = as.numeric(bmt$group>1)
 bmt$A = A
 
+library(survival)
 ## simple model fitting and plotting
-fit1 = tteICE(Surv(t2,d4,type = "mstate")~A, data=bmt)
-#> Warning: type= 'mstate' is deprecated, use a factor variable as status
+fit1 = tteICE(Surv(t2, factor(d4))~A, data=bmt)
 plot(fit1, type="ate")
 
 plot(fit1, type="inc")

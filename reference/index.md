@@ -30,7 +30,7 @@
   : tteICE: Treatment Effect Estimation for Time-to-Event Data with
   Intercurrent Events
 - [`tteICE()`](https://mephas.github.io/tteICE/reference/tteICE.md) :
-  Using formula to fit CIFs for time-to-event data with intercurrent
+  Use formula to fit CIFs for time-to-event data with intercurrent
   events
 - [`tteICEShiny()`](https://mephas.github.io/tteICE/reference/tteICEShiny.md)
   : Shiny app for tteICE

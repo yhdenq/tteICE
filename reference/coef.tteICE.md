@@ -34,7 +34,8 @@ strategies, `coef11` is the coefficients for the primary outcome event
 in the treatment group, `coef10` is the coefficients for the primary
 outcome event in the control group, `coef21` is the coefficients for the
 intercurrent event in the treated group, `coef20` is the coefficients
-for the intercurrent in the control group.
+for the intercurrent in the control group. If the nonparametric method
+is used, the return is `NULL`.
 
 ## Examples
 
@@ -46,9 +47,9 @@ A = as.numeric(bmt$group>1)
 X = as.matrix(bmt[,c('z1','z3','z5')])
 bmt$A = A
 
-fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
+library(survival)
+fit = tteICE(Surv(t2, factor(d4))~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
-#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 coef(fit)
 #>    Primary, A=1         SE Primary, A=0         SE    ICE, A=1         SE
 #> z1   0.01807550 0.01966552   0.05860219 0.04900616 -0.01067268 0.02039951

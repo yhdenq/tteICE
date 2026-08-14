@@ -12,13 +12,13 @@ Source:
 [`DESCRIPTION`](https://github.com/mephas/tteICE/blob/main/DESCRIPTION)
 
 Deng Y (2026). *tteICE: Treatment Effect Estimation for Time-to-Event
-Data with Intercurrent Events*. R package version 1.1.3,
+Data with Intercurrent Events*. R package version 1.1.5,
 <https://github.com/mephas/tteICE>.
 
     @Manual{,
       title = {tteICE: Treatment Effect Estimation for Time-to-Event Data with Intercurrent Events},
       author = {Yuhao Deng},
       year = {2026},
-      note = {R package version 1.1.3},
+      note = {R package version 1.1.5},
       url = {https://github.com/mephas/tteICE},
     }

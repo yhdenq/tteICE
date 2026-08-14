@@ -46,17 +46,17 @@ Results output functions:
   Summarize results from 'tteICE' objects
 
 - [`predict.tteICE`](https://mephas.github.io/tteICE/reference/predict.tteICE.md)
-  Show the coefficient for 'tteICE' objects
+  Predict risks for 'tteICE' objects at specific time
 
 - [`coef.tteICE`](https://mephas.github.io/tteICE/reference/coef.tteICE.md)
-  Predict risks for 'tteICE' objects at specific time points
+  Show the coefficient for 'tteICE' objects
 
-- [`bshaz`](https://mephas.github.io/tteICE/reference/bshaz.md) Extract
-  the baseline hazards for 'tteICE' objects
+- [`bshaz.tteICE`](https://mephas.github.io/tteICE/reference/bshaz.tteICE.md)
+  Extract the baseline hazards for 'tteICE' objects
 
-- [`zph`](https://mephas.github.io/tteICE/reference/zph.md) Perform a
-  test for the proportional hazards assumption for the Cox models in
-  'tteICE' objects
+- [`zph.tteICE`](https://mephas.github.io/tteICE/reference/zph.tteICE.md)
+  Perform a test for the proportional hazards assumption for the Cox
+  models in 'tteICE' objects
 
 Example data:
 

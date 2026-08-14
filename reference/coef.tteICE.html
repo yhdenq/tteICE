@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tteICE</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,8 @@ group, <code>coef0</code> is the coefficients in the control group. For other st
 each event (primary outcome event and intercurrent event). In these strategies, <code>coef11</code> is the coefficients
 for the primary outcome event in the treatment group, <code>coef10</code> is the coefficients for the primary outcome
 event in the control group, <code>coef21</code> is the coefficients for the intercurrent event in the treated group,
-<code>coef20</code> is the coefficients for the intercurrent in the control group.</p>
+<code>coef20</code> is the coefficients for the intercurrent in the control group. If the nonparametric method is used,
+the return is <code>NULL</code>.</p>
     </div>
 
     <div class="section level2">
@@ -76,9 +77,9 @@ event in the control group, <code>coef21</code> is the coefficients for the inte
 <span class="r-in"><span><span class="va">X</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="va">bmt</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'z1'</span>,<span class="st">'z3'</span>,<span class="st">'z5'</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">bmt</span><span class="op">$</span><span class="va">A</span> <span class="op">=</span> <span class="va">A</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">fit</span> <span class="op">=</span> <span class="fu"><a href="tteICE.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>,</span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">fit</span> <span class="op">=</span> <span class="fu"><a href="tteICE.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">d4</span><span class="op">)</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>,</span></span>
 <span class="r-in"><span> data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"whileon"</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>type= 'mstate' is deprecated, use a factor variable as status</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Primary, A=1         SE Primary, A=0         SE    ICE, A=1         SE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> z1   0.01807550 0.01966552   0.05860219 0.04900616 -0.01067268 0.02039951</span>
@@ -100,7 +101,7 @@ event in the control group, <code>coef21</code> is the coefficients for the inte
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

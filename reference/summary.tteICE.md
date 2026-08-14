@@ -6,7 +6,7 @@ This function summarizes the results
 
 ``` r
 # S3 method for class 'tteICE'
-summary(object, ...)
+summary(object, digits = 3, ...)
 ```
 
 ## Arguments
@@ -15,6 +15,10 @@ summary(object, ...)
 
   A fitted object returned by the function `tteICE`, `surv.tteICE`, or
   `scr.tteICE`.
+
+- digits:
+
+  The digits of the results
 
 - ...:
 
@@ -61,7 +65,15 @@ summary(fit1)
 #> P-value of the average treatment effect: 0.591 
 #> -----------------------------------------------------------------------
 #> The estimated cumulative incidences and treatment effects at quartiles:
-#> Error in summary.tteICE(fit1): object 'digits' not found
+#>          660   1320   1980   2640
+#> CIF1   0.532  0.586  0.586  0.630
+#> se1    0.050  0.050  0.050  0.062
+#> CIF0   0.609  0.638  0.638  0.638
+#> se0    0.080  0.079  0.079  0.079
+#> ATE   -0.076 -0.051 -0.051 -0.008
+#> se     0.095  0.094  0.094  0.101
+#> p.val  0.419  0.584  0.584  0.938
+#> 
 
 fit2 = surv.tteICE(A, bmt$t2, bmt$d4, "composite")
 predict(fit2)
@@ -75,13 +87,12 @@ predict(fit2)
 #> p.val  0.41920919  0.58425802  0.58425802  0.938395060
 
 library(survival)
-fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5, 
+fit3 = tteICE(Surv(t2, factor(d4))~A|z1+z3+z5, 
               data=bmt, strategy="composite", method='eff')
-#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 summary(fit3)
 #> Input:
-#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + 
-#>     z5, data = bmt, strategy = "composite", method = "eff")
+#> tteICE(formula = Surv(t2, factor(d4)) ~ A | z1 + z3 + z5, data = bmt, 
+#>     strategy = "composite", method = "eff")
 #> -----------------------------------------------------------------------
 #> Data type: competing risks 
 #> Strategy: composite variable strategy 
@@ -90,6 +101,15 @@ summary(fit3)
 #> Maximum follow-up time: 2640 
 #> P-value of the average treatment effect: 0.137 
 #> -----------------------------------------------------------------------
+#> -----------------------------------------------------------------------
 #> The estimated cumulative incidences and treatment effects at quartiles:
-#> Error in summary.tteICE(fit3): object 'digits' not found
+#>          660   1320   1980   2640
+#> CIF1   0.525  0.584  0.584  0.635
+#> se1       NA     NA     NA     NA
+#> CIF0   0.678  0.701  0.701  0.701
+#> se0       NA     NA     NA     NA
+#> ATE   -0.154 -0.117 -0.117 -0.066
+#> se     0.084  0.083  0.083  0.088
+#> p.val  0.067  0.156  0.156  0.449
+#> 
 ```

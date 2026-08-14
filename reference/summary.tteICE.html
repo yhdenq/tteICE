@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">tteICE</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for class 'tteICE'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>, digits <span class="op">=</span> <span class="fl">3</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -49,6 +49,10 @@
 
 <dl><dt id="arg-object">object<a class="anchor" aria-label="anchor" href="#arg-object"></a></dt>
 <dd><p>A fitted object returned by the function <code>tteICE</code>, <code>surv.tteICE</code>, or <code>scr.tteICE</code>.</p></dd>
+
+
+<dt id="arg-digits">digits<a class="anchor" aria-label="anchor" href="#arg-digits"></a></dt>
+<dd><p>The digits of the results</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -93,7 +97,15 @@ sample size, treated sample size, controlled sample size, p-value, and predicted
 <span class="r-out co"><span class="r-pr">#&gt;</span> P-value of the average treatment effect: 0.591 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The estimated cumulative incidences and treatment effects at quartiles:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary.tteICE(fit1):</span> object 'digits' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          660   1320   1980   2640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.532  0.586  0.586  0.630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se1    0.050  0.050  0.050  0.062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.609  0.638  0.638  0.638</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se0    0.080  0.079  0.079  0.079</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.076 -0.051 -0.051 -0.008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.095  0.094  0.094  0.101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.419  0.584  0.584  0.938</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">fit2</span> <span class="op">=</span> <span class="fu"><a href="surv.tteICE.html">surv.tteICE</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">t2</span>, <span class="va">bmt</span><span class="op">$</span><span class="va">d4</span>, <span class="st">"composite"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit2</span><span class="op">)</span></span></span>
@@ -107,13 +119,12 @@ sample size, treated sample size, controlled sample size, p-value, and predicted
 <span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.41920919  0.58425802  0.58425802  0.938395060</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">fit3</span> <span class="op">=</span> <span class="fu"><a href="tteICE.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="va">d4</span>, type <span class="op">=</span> <span class="st">"mstate"</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>, </span></span>
+<span class="r-in"><span><span class="va">fit3</span> <span class="op">=</span> <span class="fu"><a href="tteICE.html">tteICE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">t2</span>, <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">d4</span><span class="op">)</span><span class="op">)</span><span class="op">~</span><span class="va">A</span><span class="op">|</span><span class="va">z1</span><span class="op">+</span><span class="va">z3</span><span class="op">+</span><span class="va">z5</span>, </span></span>
 <span class="r-in"><span>              data<span class="op">=</span><span class="va">bmt</span>, strategy<span class="op">=</span><span class="st">"composite"</span>, method<span class="op">=</span><span class="st">'eff'</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>type= 'mstate' is deprecated, use a factor variable as status</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Input:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A | z1 + z3 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     z5, data = bmt, strategy = "composite", method = "eff")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> tteICE(formula = Surv(t2, factor(d4)) ~ A | z1 + z3 + z5, data = bmt, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     strategy = "composite", method = "eff")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Data type: competing risks </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Strategy: composite variable strategy </span>
@@ -122,8 +133,17 @@ sample size, treated sample size, controlled sample size, p-value, and predicted
 <span class="r-out co"><span class="r-pr">#&gt;</span> Maximum follow-up time: 2640 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> P-value of the average treatment effect: 0.137 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The estimated cumulative incidences and treatment effects at quartiles:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in summary.tteICE(fit3):</span> object 'digits' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          660   1320   1980   2640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CIF1   0.525  0.584  0.584  0.635</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se1       NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CIF0   0.678  0.701  0.701  0.701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se0       NA     NA     NA     NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ATE   -0.154 -0.117 -0.117 -0.066</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> se     0.084  0.083  0.083  0.088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> p.val  0.067  0.156  0.156  0.449</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
@@ -136,7 +156,7 @@ sample size, treated sample size, controlled sample size, p-value, and predicted
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

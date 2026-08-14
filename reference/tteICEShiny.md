@@ -18,9 +18,7 @@ Rshiny interface
 ## Examples
 
 ``` r
-# \donttest{
-if(interactive()){
+if(interactive() && requireNamespace("shiny", quietly = TRUE)){
   tteICEShiny()
 }
-# }
 ```

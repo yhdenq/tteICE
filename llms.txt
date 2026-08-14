@@ -313,17 +313,7 @@ print(fit7)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.4562 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980    2640
-#> CIF1   0.2107  0.2386  0.2386  0.2855
-#> se1    0.0432  0.0461  0.0461  0.0607
-#> CIF0   0.3058  0.3058  0.3058  0.3058
-#> se0    0.0703  0.0703  0.0703  0.0703
-#> ATE   -0.0951 -0.0672 -0.0672 -0.0204
-#> se     0.0784  0.0788  0.0788  0.0863
-#> p.val  0.2250  0.3937  0.3937  0.8132
+#> P-value of the average treatment effect: 0.456
 predict(fit7)
 #>               660        1320        1980        2640
 #> CIF1   0.21074266  0.23860240  0.23860240  0.28547077
@@ -358,17 +348,7 @@ print(fit8)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.8945 
-#> -----------------------------------------------------------------------
-#> The estimated cumulative incidences and treatment effects at quartiles:
-#>           660    1320    1980   2640
-#> CIF1   0.5344  0.6028  0.6028 0.6520
-#> se1    0.0553  0.0569  0.0569 0.0603
-#> CIF0   0.5597  0.6079  0.6079 0.6079
-#> se0    0.0664  0.0622  0.0622 0.0622
-#> ATE   -0.0254 -0.0052 -0.0052 0.0441
-#> se     0.0685  0.0655  0.0655 0.0711
-#> p.val  0.7112  0.9373  0.9373 0.5356
+#> P-value of the average treatment effect: 0.895
 predict(fit8)
 #>               660        1320        1980       2640
 #> CIF1   0.53436338  0.60278356  0.60278356 0.65201552
@@ -469,7 +449,7 @@ before the primary outcome events.
   : tteICE: Treatment Effect Estimation for Time-to-Event Data with
   Intercurrent Events
 - [`tteICE()`](https://mephas.github.io/tteICE/reference/tteICE.md) :
-  Using formula to fit CIFs for time-to-event data with intercurrent
+  Use formula to fit CIFs for time-to-event data with intercurrent
   events
 - [`tteICEShiny()`](https://mephas.github.io/tteICE/reference/tteICEShiny.md)
   : Shiny app for tteICE

@@ -6,7 +6,7 @@ This function summarizes the results
 
 ``` r
 # S3 method for class 'tteICE'
-print(x, digits = 4, ...)
+print(x, digits = 3, ...)
 ```
 
 ## Arguments
@@ -58,7 +58,7 @@ print(fit1)
 #> P-value of the average treatment effect: 0.591 
 
 fit2 = scr.tteICE(A, bmt$t1, bmt$d1, bmt$t2, bmt$d2, "composite")
-print(fit2, digits=2)
+print(fit2)
 #> Input:
 #> scr.tteICE(A = A, Time = bmt$t1, status = bmt$d1, Time_int = bmt$t2, 
 #>     status_int = bmt$d2, strategy = "composite")
@@ -68,15 +68,14 @@ print(fit2, digits=2)
 #> Estimation method: nonparametric estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.59 
+#> P-value of the average treatment effect: 0.591 
 
 library(survival)
-fit3 = tteICE(Surv(t2, d4, type = "mstate")~A,
+fit3 = tteICE(Surv(t2, factor(d4))~A|z1+z3+z5,
               data=bmt, strategy="composite", method='eff')
-#> Warning: type= 'mstate' is deprecated, use a factor variable as status
-print(fit3, digits=3)
+print(fit3, digits=4)
 #> Input:
-#> tteICE(formula = Surv(t2, d4, type = "mstate") ~ A, data = bmt, 
+#> tteICE(formula = Surv(t2, factor(d4)) ~ A | z1 + z3 + z5, data = bmt, 
 #>     strategy = "composite", method = "eff")
 #> -----------------------------------------------------------------------
 #> Data type: competing risks 
@@ -84,5 +83,5 @@ print(fit3, digits=3)
 #> Estimation method: semiparametrically efficient estimation 
 #> Observations: 137 (including 99 treated and 38 control)
 #> Maximum follow-up time: 2640 
-#> P-value of the average treatment effect: 0.591 
+#> P-value of the average treatment effect: 0.1366 
 ```

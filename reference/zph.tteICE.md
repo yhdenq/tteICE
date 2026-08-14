@@ -32,7 +32,8 @@ group. For other strategies, Cox models are fitted for each event
 group, `ph10` is the P-values for the primary outcome event in the
 control group, `ph21` is the P-values for the intercurrent event in the
 treated group, `ph20` is the P-values for the intercurrent in the
-control group.
+control group. If the nonparametric method is used, the return is
+`NULL`.
 
 ## Examples
 
@@ -44,9 +45,9 @@ A = as.numeric(bmt$group>1)
 X = as.matrix(bmt[,c('z1','z3','z5')])
 bmt$A = A
 
-fit = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
+library(survival)
+fit = tteICE(Surv(t2, factor(d4))~A|z1+z3+z5,
  data=bmt, strategy="whileon", method='eff')
-#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 print(fit$ph)
 #>        Primary, A=1 Primary, A=0  ICE, A=1  ICE, A=0
 #> z1        0.6834275   0.02040233 0.8938943 0.3397057
@@ -60,26 +61,5 @@ zph(fit)
 #> z5        0.5778595   0.07386660 0.7635378 0.1071366
 #> GLOBAL    0.7696407   0.07948831 0.9693761 0.1338763
 
-plot(fit$ph$ph11)
-#> Warning: no non-missing arguments to min; returning Inf
-#> Warning: no non-missing arguments to max; returning -Inf
-#> Warning: no non-missing arguments to min; returning Inf
-#> Warning: no non-missing arguments to max; returning -Inf
-
-#> Error in plot.window(...): need finite 'xlim' values
-plot(fit$ph$ph10)
-#> Warning: no non-missing arguments to min; returning Inf
-#> Warning: no non-missing arguments to max; returning -Inf
-#> Warning: no non-missing arguments to min; returning Inf
-#> Warning: no non-missing arguments to max; returning -Inf
-#> Error in plot.window(...): need finite 'xlim' values
-
-
-## No results when method is nonparametric
-fit.np = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
- data=bmt, strategy="whileon", method='np')
-#> Warning: type= 'mstate' is deprecated, use a factor variable as status
-print(fit.np$ph)
-#> NULL
 
 ```

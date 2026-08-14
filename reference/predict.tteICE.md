@@ -86,9 +86,8 @@ predict(fit2)
 
 ## a simpler way
 library(survival)
-fit3 = tteICE(Surv(t2, d4, type = "mstate")~A|z1+z3+z5,
+fit3 = tteICE(Surv(t2, factor(d4))~A|z1+z3+z5,
               data=bmt, strategy="composite", method='eff')
-#> Warning: type= 'mstate' is deprecated, use a factor variable as status
 predict(fit3, timeset=c(670,2000))
 #>               670        2000
 #> CIF1   0.52459066  0.58362684
