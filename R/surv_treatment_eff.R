@@ -118,11 +118,11 @@ surv.treatment.eff <- function(A,Time,cstatus,X=NULL){
   Vt = sd(IFt,na.rm=TRUE)/sqrt(n)
   p = 2*pnorm(-abs(Tt/Vt))
   scaled = attr(X,"scaled:scale")
-  coef1 = fit1$coefficients / scaled
-  coef0 = fit0$coefficients / scaled
-  se1 = sqrt(diag(vcov(fit1))) / scaled
-  se0 = sqrt(diag(vcov(fit0))) / scaled
-  coef = data.frame(coef11=coef1,se11=se1,coef10=coef0,se10=se0)
+  coef11 = fit1$coefficients / scaled
+  coef10 = fit0$coefficients / scaled
+  se11 = sqrt(diag(vcov(fit1))) / scaled
+  se10 = sqrt(diag(vcov(fit0))) / scaled
+  coef = data.frame(coef11=coef11,se11=se11,coef10=coef10,se10=se10)
   colnames(coef) = c('Primary, A=1', 'SE', 'Primary, A=0', 'SE')
   ph1 = cox.zph(fit1, terms=FALSE)[[1]][,3]
   ph0 = cox.zph(fit0, terms=FALSE)[[1]][,3]
