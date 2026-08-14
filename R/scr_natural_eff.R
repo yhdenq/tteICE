@@ -70,7 +70,13 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
     return(scr.natural(A,Time,status,Time_int,status_int))
   }
   X = as.matrix(scale(X))
-  if(ncol(X)==1) colnames(X) <- paste0("X.", colnames(X))
+  if (is.null(colnames(X))) {
+    if (ncol(X) == 1) {
+      colnames(X) = "X"
+    } else {
+    colnames(X) = paste0("X", 1:ncol(X))
+    }
+  } 
   df = data.frame(id=1:n, Td=Time, Dd=status, Tr=Time_int, Dr=status_int, X=X, A=A)
   id <- df$id
   mg = tmerge(data1=df, data2=df, id=id, event=.event(df$Td,df$Dd))
@@ -269,8 +275,8 @@ scr.natural.eff <- function(A,Time,status,Time_int,status_int,X=NULL){
   ph20 = c(NA, cox.zph(fit20, terms=FALSE)[[1]][,3])
   ph = data.frame(ph11=ph11,ph10=ph10,ph21=ph21,ph20=ph20)
   # if(ncol(X)==1)  colnames(X) <- sub("^X\\.", "", names(df))
-  # rownames(coef) = rownames(ph)[1:(ncol(X)+1)] = c('ICE',colnames(X))
-  rownames(coef) = rownames(ph)[1:(ncol(X)+1)] = c('ICE', sub("^X\\.", "", colnames(X)))
+  rownames(coef) = rownames(ph)[1:(ncol(X)+1)] = c('ICE', colnames(X))
+  #rownames(coef) = rownames(ph)[1:(ncol(X)+1)] = c('ICE', sub("^X\\.", "", colnames(X)))
   colnames(ph) = c('Primary, A=1', 'Primary, A=0', 'ICE, A=1', 'ICE, A=0')
   return(list(time1=tt,time0=tt,cif1=cif1,cif0=cif0,se1=se1,se0=se0,
               time=tt,ate=ate,se=se,p.val=p,
