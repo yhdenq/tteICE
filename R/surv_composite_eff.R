@@ -56,7 +56,7 @@ surv.composite.eff <- function(A,Time,cstatus,X=NULL){
     return(surv.composite(A,Time,cstatus))
   } 
   X = as.matrix(scale(X))
-  if (is.null(colnames(X)) {
+  if (is.null(colnames(X))) {
     if (ncol(X)==1) {
       colnames(X) = "X"
     } else {
