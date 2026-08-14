@@ -58,12 +58,13 @@ surv.boot <- function(fit,nboot=0,seed=NULL){
     for(b in 1:nboot){
       subset = sample(1:N,replace=TRUE)
       if (fit$dtype=='cmprsk'){
-        fitb = surv.tteICE(fit$A,fit$Time,fit$cstatus,fit$strategy,fit$cov1,fit$method,
-                           fit$weights,subset=subset,na.rm=FALSE,nboot=-1)
+        fitb = try(surv.tteICE(fit$A,fit$Time,fit$cstatus,fit$strategy,fit$cov1,fit$method,
+                           fit$weights,subset=subset,na.rm=FALSE,nboot=-1))
       } else {
-        fitb = scr.tteICE(fit$A,fit$Time,fit$status,fit$Time_int,fit$status_int,fit$strategy,fit$cov1,fit$method,
-                          fit$weights,subset=subset,na.rm=FALSE,nboot=-1)
+        fitb = try(scr.tteICE(fit$A,fit$Time,fit$status,fit$Time_int,fit$status_int,fit$strategy,fit$cov1,fit$method,
+                          fit$weights,subset=subset,na.rm=FALSE,nboot=-1))
       }
+      if (inherits(fitb, "try-error")) next
       cifb1 = .matchy(fitb$cif1,fitb$time1,tt)
       cifb0 = .matchy(fitb$cif0,fitb$time0,tt)
       cif1l = rbind(cif1l, cifb1)
