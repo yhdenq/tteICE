@@ -64,6 +64,13 @@ surv.whileon.eff <- function(A,Time,cstatus,X=NULL){
     return(surv.whileon(A,Time,cstatus))
   }
   X = as.matrix(scale(X))
+  if (is.null(colnames(X)) {
+    if (ncol(X)==1) {
+      colnames(X) = "X"
+    } else {
+      colnames(X) = paste0("X", 1:ncol(X))
+    }
+  }
   ips = .ipscore(A,X)
   fit11 = coxph(Surv(Time,cstatus==1)~X, subset=(A==1))
   fit10 = coxph(Surv(Time,cstatus==1)~X, subset=(A==0))
