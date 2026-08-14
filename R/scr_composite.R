@@ -51,7 +51,7 @@
 #' @keywords internal
 
 scr.composite <- function(A,Time,status,Time_int,status_int,weights=rep(1,length(A))){
-  Time = (Time + Time_int - abs(Time-Time_int))/2
+  Time = pmin(Time, Time_int)
   cstatus = status + 2*status_int
   cstatus[cstatus>2] = 2
   fit = surv.composite(A,Time,cstatus,weights)
