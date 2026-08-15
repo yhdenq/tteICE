@@ -105,9 +105,9 @@ summary(fit3)
 #> The estimated cumulative incidences and treatment effects at quartiles:
 #>          660   1320   1980   2640
 #> CIF1   0.525  0.584  0.584  0.635
-#> se1       NA     NA     NA     NA
+#> se1    0.051  0.051  0.051  0.059
 #> CIF0   0.678  0.701  0.701  0.701
-#> se0       NA     NA     NA     NA
+#> se0    0.066  0.065  0.065  0.065
 #> ATE   -0.154 -0.117 -0.117 -0.066
 #> se     0.084  0.083  0.083  0.088
 #> p.val  0.067  0.156  0.156  0.449
